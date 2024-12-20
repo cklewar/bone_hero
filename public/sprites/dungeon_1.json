@@ -1,0 +1,128 @@
+{
+  "hero_2": {
+    "x": 18,
+    "y": 410,
+    "width": 400,
+    "height": 50,
+    "sliceX": 8,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 0,
+        "speed": 1,
+        "loop": false
+      },
+      "run": {
+        "from": 0,
+        "to": 7,
+        "speed": 12,
+        "loop": true
+      },
+      "hit": 8
+    }
+  },
+  "enemy_1": {
+    "x": 8,
+    "y": 462,
+    "width": 97,
+    "height": 50,
+    "sliceX": 2,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 0,
+        "speed": 1,
+        "loop": true
+      },
+      "run": {
+        "from": 0,
+        "to": 1,
+        "speed": 10,
+        "loop": true
+      },
+      "hit": 8
+    }
+  },
+  "axe_1": {
+    "x": 16,
+    "y": 370,
+    "width": 143,
+    "height": 40,
+    "sliceX": 4,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 0,
+        "speed": 0,
+        "loop": true
+      },
+      "throw": {
+        "from": 0,
+        "to": 3,
+        "speed": 10,
+        "loop": true
+      }
+    }
+  },
+  "heart_full": {
+    "x": 190,
+    "y": 370,
+    "width": 40,
+    "height": 40
+  },
+  "heart_half": {
+    "x": 230,
+    "y": 370,
+    "width": 40,
+    "height": 40
+  },
+  "heart_quarter": {
+    "x": 270,
+    "y": 370,
+    "width": 40,
+    "height": 40
+  },
+  "heart_empty": {
+    "x": 310,
+    "y": 370,
+    "width": 40,
+    "height": 40
+  },
+  "floor": {
+    "x": 16,
+    "y": 64,
+    "width": 48,
+    "height": 48,
+    "sliceX": 3,
+    "sliceY": 3
+  },
+  "block": {
+    "x": 368,
+    "y": 394,
+    "width": 64,
+    "height": 64,
+    "sliceX": 1,
+    "sliceY": 1
+  },
+  "chest": {
+    "x": 304,
+    "y": 304,
+    "width": 48,
+    "height": 16,
+    "sliceX": 3,
+    "anims": {
+      "open": {
+        "from": 0,
+        "to": 2,
+        "speed": 20,
+        "loop": false
+      },
+      "close": {
+        "from": 2,
+        "to": 0,
+        "speed": 20,
+        "loop": false
+      }
+    }
+  }
+}
