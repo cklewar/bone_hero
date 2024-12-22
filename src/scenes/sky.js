@@ -5,7 +5,7 @@ import {
 import { watchPlayerOffScreen } from "../utils.js";
 import * as consts from "../const.js"
 
-export default async function sky(k) {
+export default async function sky(k, levelIdx) {
   const entities = {
     player: null,
     enemy: null,
@@ -19,7 +19,6 @@ export default async function sky(k) {
 			})
 	])
 
-  const levelIdx = 0
    /*
 
 	// character dialog data
@@ -51,6 +50,21 @@ export default async function sky(k) {
 			"                               ",
 			"===============================",
 		],
+		[
+		    "                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"     :::::                     ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"===============================",
+		]
  	]
 
 	const level = k.addLevel(levels[levelIdx], {
@@ -72,9 +86,10 @@ export default async function sky(k) {
 			],
 		},
 	})
+
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "forest_and_castle");
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", consts.scenes);
 
 	/*
     function watchPlayerHealth(k) {

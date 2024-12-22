@@ -43,5 +43,5 @@ export default async function village(k) {
 
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave");
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "village", "cave", consts.scenes);
 }

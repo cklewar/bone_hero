@@ -43,7 +43,7 @@ export default async function graveyard(k) {
 
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sunset");
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "graveyard", "sunset", consts.scenes);
 }
 
 

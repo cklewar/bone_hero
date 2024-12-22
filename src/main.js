@@ -2,14 +2,14 @@ import kaplay from "kaplay";
 import "kaplay/global";
 import { healthBar } from "./healthbar.js";
 import { playerState } from "./playerGlobalState.js";
-import sky from "./scenes/sky.js";
+/*import sky from "./scenes/sky.js";
 import forest_and_castle from "./scenes/forest_and_castle.js";
 import village from "./scenes/village.js";
 import graveyard from "./scenes/graveyard.js";
 import sunset from "./scenes/sunset.js";
 import castle from "./scenes/castle.js";
 import cave from "./scenes/cave.js";
-import intro from "./scenes/intro.js";
+import intro from "./scenes/intro.js";*/
 import * as consts from "./const.js"
 
 const k = kaplay({
@@ -50,20 +50,16 @@ k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
 
 k.setGravity(consts.GRAVITY);
 
-const scenes = {
-  intro,
-  sky,
-  forest_and_castle,
-  village,
-  cave,
-  graveyard,
-  sunset,
-  castle,
-};
-
-
-for (const sceneName in scenes) {
-  k.scene(sceneName, () => scenes[sceneName](k));
+for (const sceneName in consts.scenes) {
+  k.scene(sceneName, ({levelIdx}) => consts.scenes[sceneName](k, 0));
 }
 
-k.go("intro");
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+//k.scene("sky", ({levelIdx}) => consts.sky(k, 0));
+k.go("sky", {levelIdx: 0});
+/*
+await delay(5000);
+k.scene("sky", ({levelIdx}) => sky(k, 1));
+k.go("sky", {levelIdx: 1});
+*/

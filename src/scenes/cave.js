@@ -43,5 +43,5 @@ export default async function cave(k) {
 
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "graveyard");
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "graveyard", consts.scenes);
 }
