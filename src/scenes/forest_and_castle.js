@@ -2,8 +2,10 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
-import { watchPlayerOffScreen } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth } from "../utils.js";
+import { healthBar } from "../components/healthbar.js";
 import * as consts from "../const.js"
+import {get_scenes} from "./scenes.js";
 
 export default async function forest_and_castle(k, levelIdx) {
     const entities = {
@@ -87,7 +89,8 @@ export default async function forest_and_castle(k, levelIdx) {
             },
 	})
 
-	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level, get_scenes());
+	healthBar(k);
 	setPlayerControls(k, entities.player);
 	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "forest_and_castle", "village", consts.scenes);
 }

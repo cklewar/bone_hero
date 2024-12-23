@@ -2,10 +2,15 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
-import { watchPlayerOffScreen } from "../utils.js";
-import * as consts from "../const.js"
+import { generateEnemyComponents } from "../entities/enemy.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
+import { healthBar } from "../components/healthbar.js";
+import { playerState } from "../state/playerGlobalState.js";
+import * as consts from "../const.js";
+import {get_scenes} from "./scenes.js";
 
 export default async function sky(k, levelIdx) {
+
   const entities = {
     player: null,
     enemy: null,
@@ -102,51 +107,21 @@ export default async function sky(k, levelIdx) {
 		},
 	})
 
+
+    //Player
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", consts.scenes);
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
+	watchEntityHealth(k, playerState);
+
+    //Enemy
+	entities.enemy = generateEnemyComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+
+
+    //onCollideWithPlayer(k, entities.enemy);
 
 	/*
-    function watchPlayerHealth(k) {
-		k.onUpdate(() => {
-			if (playerState.getHealth() <= 0) {
-				//playerState.setHealth(playerState.getMaxHealth());
-				k.go("game_over");
-				//k.go("main1");
-			}
-		});
-	}*/
-
-	//function onCollideWithPlayer(k, entity) {
-		/*player.onCollide("axe", async (player) => {
-			if (player.isAttacking) return;
-			playerState.setHealth(playerState.getHealth() - 0.5); //enemy.attackPower
-			k.destroyAll("healthContainer");
-			healthBar(k, player);
-			shake(1);
-		});*/
-	//}
-
-	//healthBar(k);
-	//watchPlayerHealth(k);
-
-	/*const enemy = level.spawn(
-		[
-			sprite("enemy_1", { anim: "idle" }),
-			pos(800, height() - consts.PLAYER_START_POS_Y_OFFSET),
-			area({ shape: new Rect(vec2(0, 16), 12, 12) }),
-			scale(3),
-			body(),
-			anchor("center"),
-			state("move", ["idle", "attack", "move"]),
-			tile(),
-		],
-		2,
-		2,
-	);
-
-	onCollideWithPlayer(k, enemy);
-
 	// Run the callback once every time we enter "idle" state.
 	// Here we stay "idle" for 0.5 second, then enter "attack" state.
 	enemy.onStateEnter("idle", async () => {

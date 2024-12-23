@@ -3,6 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { watchPlayerOffScreen } from "../utils.js";
+import { healthBar } from "../components/healthbar.js";
 import * as consts from "../const.js"
 
 export default async function village(k, levelIdx) {
@@ -41,6 +42,7 @@ export default async function village(k, levelIdx) {
 	})
 
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+	healthBar(k);
 	setPlayerControls(k, entities.player);
 	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "village", "cave", consts.scenes);
 }

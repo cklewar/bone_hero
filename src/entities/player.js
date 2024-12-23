@@ -1,7 +1,6 @@
 import { playAnimIfNotPlaying} from "../utils.js";
 import * as consts from "../const.js"
 
-
 function spin() {
     let spinning = false;
     return {
@@ -27,35 +26,6 @@ function jump(p) {
 	}
 }
 
-//function handleout(levelIdx, lvl_length, zcene) {
-function handleout() {
-	return {
-		id: "handleout",
-		require: ["pos"],
-		update() {
-			const spos = this.screenPos();
-			if (spos.x > width()) {
-                return "left";
-				/*if (levelIdx + 1 < lvl_length) {
-				    return "nextLevel";
-					//go(zcene, levelIdx + 1);
-				}
-				else {
-				    return "nextScene";
-					//go(zcene, 0);
-				}*/
-			}
-			else if (spos.y < 0 || spos.y > height()) {
-			    return "right";
-				/*if (levelIdx > 0) {
-				    return "previousLevel";
-					//go(zcene, levelIdx - 1);
-				}*/
-			}
-		},
-	};
-}
-
 export function generatePlayerComponents(k, pos, level) {
     const player = level.spawn(
         [
@@ -67,8 +37,6 @@ export function generatePlayerComponents(k, pos, level) {
             k.scale(3),
             k.anchor("center"),
             k.tile(),
-            //handleout(0, 1, "forest_and_castle"),
-            handleout(),
             {
               speed: 340,
               attackPower: 1,
