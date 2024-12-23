@@ -2,9 +2,9 @@
   "grave_3": {
     "x": 0,
     "y": 0,
-    "width": 1000,
+    "width": 320,
     "height": 64,
-    "sliceX": 3,
+    "sliceX": 5,
     "anims": {
       "idle": {
         "from": 0,

@@ -36,7 +36,7 @@ export default async function graveyard(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"    :                          ",
+			"    :  :  :  :                 ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -56,13 +56,15 @@ export default async function graveyard(k, levelIdx) {
 				body({ isStatic: true }),
 			],
 			":": () => [
-				sprite("grave_3", {}),
+				sprite("grave_3", { anim: "idle" }),
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
 			],
 		},
 	})
+
+
 
 	//Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
