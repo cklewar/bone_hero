@@ -117,8 +117,15 @@ export default async function sky(k, levelIdx) {
 	})
 
     //Bone Animation
-
-
+    if (levelIdx === 0) {
+        const bone = add([
+            sprite("bone_2", { anim: "idle" }),
+            pos(10, height() - 190),
+            scale(3),
+	    ])
+	    await consts.delay(2400);
+        k.destroy(bone);
+    }
 
     //Player
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
@@ -128,6 +135,6 @@ export default async function sky(k, levelIdx) {
 	watchEntityHealth(k, playerState);
 
     //Enemy
-	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.ENEMY_START_POS_Y_OFFSET), level, entities.player);
     onCollideWithPlayer(k, entities.player, "axe");
 }

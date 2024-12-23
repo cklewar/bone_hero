@@ -1,0 +1,17 @@
+{
+  "bone_2": {
+    "x": 0,
+    "y": 0,
+    "width": 430,
+    "height": 64,
+    "sliceX": 7,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 6,
+        "speed": 3,
+        "loop": true
+      }
+    }
+  }
+}

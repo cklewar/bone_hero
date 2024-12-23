@@ -39,18 +39,9 @@ k.loadSprite("stalacknieten_1", "sprites/stalacknieten_1.png");
 k.loadSpriteAtlas("sprites/daemon_3.png", "sprites/daemon_3.json");
 k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
 k.loadSpriteAtlas("sprites/grave_3.png", "sprites/grave_3.json");
+k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
 
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-
-const delay = ms => new Promise(res => setTimeout(res, ms));
-
-/*
-await delay(5000);
-k.scene("sky", ({levelIdx}) => sky(k, 1));
-k.go("sky", {levelIdx: 1});
-*/
-//k.go("forest_and_castle", {levelIdx: 0});
-
-k.go("graveyard",{levelIdx: 0});
+k.go("sky",{levelIdx: 0});
