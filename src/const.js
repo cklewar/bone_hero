@@ -7,3 +7,4 @@ export const PLAYER_HEALTH = 4;
 export const PLAYER_NAME = "Lucifer"
 export const PAD = 24;
 export const PLAYER_START_POS_Y_OFFSET = 200;
+export const LEVEL_HEIGHT_OFFSET = 1000;

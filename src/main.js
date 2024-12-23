@@ -51,5 +51,7 @@ k.go("sky", {levelIdx: 1});
 */
 
 //k.go("forest_and_castle", {levelIdx: 0});
-k.go("sky", {levelIdx: 0});
+k.go("graveyard",{levelIdx: 0});
+
+
 

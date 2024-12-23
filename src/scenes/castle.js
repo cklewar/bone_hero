@@ -2,9 +2,12 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
-import { watchPlayerOffScreen } from "../utils.js";
+import { generateEnemyComponents } from "../entities/enemy.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
-import * as consts from "../const.js"
+import { playerState } from "../state/playerGlobalState.js";
+import * as consts from "../const.js";
+import {get_scenes} from "./scenes.js";
 
 export default async function castle(k, levelIdx) {
     const entities = {
@@ -23,9 +26,23 @@ export default async function castle(k, levelIdx) {
     // level layouts
     const levels = [
         [
-            "                                        ",
-            "========================================",
-        ],
+		    "                               ",
+		    "                               ",
+		    "                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"===============================",
+		],
     ]
 
     const level = addLevel(levels[levelIdx], {
@@ -34,7 +51,7 @@ export default async function castle(k, levelIdx) {
         tiles: {
             "=": () => [
                 sprite("grass", {}),
-                pos(0, height() - 100),
+                pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
                 area(),
                 body({ isStatic: true }),
             ],

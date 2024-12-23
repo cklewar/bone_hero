@@ -2,9 +2,11 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
-import { watchPlayerOffScreen, watchEntityHealth } from "../utils.js";
+import { generateEnemyComponents } from "../entities/enemy.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
-import * as consts from "../const.js"
+import { playerState } from "../state/playerGlobalState.js";
+import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
 
 export default async function forest_and_castle(k, levelIdx) {
@@ -89,8 +91,14 @@ export default async function forest_and_castle(k, levelIdx) {
             },
 	})
 
-	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level, get_scenes());
+    //Player
+    entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "forest_and_castle", "village", consts.scenes);
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "forest_and_castle", "village", get_scenes());
+	watchEntityHealth(k, playerState);
+
+	//Enemy
+	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+    onCollideWithPlayer(k, entities.player, "axe");
 }

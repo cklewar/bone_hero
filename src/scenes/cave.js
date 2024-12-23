@@ -2,6 +2,7 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
+import { generateEnemyComponents } from "../entities/enemy.js";
 import { watchPlayerOffScreen } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import * as consts from "../const.js"
@@ -34,15 +35,16 @@ export default async function cave(k, levelIdx) {
 		tiles: {
 			"=": () => [
 				sprite("grass", {}),
-				pos(0, height() - 100),
+				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
 			],
 		},
 	})
 
-	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "graveyard", consts.scenes);
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "graveyard", get_scenes());
+	watchEntityHealth(k, playerState);
 }
