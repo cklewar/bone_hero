@@ -36,7 +36,7 @@ export default async function graveyard(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"                               ",
+			"    :                          ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -55,6 +55,12 @@ export default async function graveyard(k, levelIdx) {
 				area(),
 				body({ isStatic: true }),
 			],
+			":": () => [
+				sprite("grave_3", {}),
+				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
+				area(),
+				body({ isStatic: true }),
+			],
 		},
 	})
 
@@ -66,6 +72,6 @@ export default async function graveyard(k, levelIdx) {
 	watchEntityHealth(k, playerState);
 
 	//Enemy
-	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
-    onCollideWithPlayer(k, entities.player, "axe");
+	//entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+    //onCollideWithPlayer(k, entities.player, "axe");
 }

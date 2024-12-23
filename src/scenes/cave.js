@@ -36,7 +36,7 @@ export default async function cave(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"                               ",
+			"    :::::::                    ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -51,6 +51,12 @@ export default async function cave(k, levelIdx) {
 		tiles: {
 			"=": () => [
 				sprite("grass", {}),
+				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
+				area(),
+				body({ isStatic: true }),
+			],
+			":": () => [
+				sprite("stalacknieten_1", {}),
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),

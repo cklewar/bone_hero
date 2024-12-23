@@ -116,6 +116,10 @@ export default async function sky(k, levelIdx) {
 		},
 	})
 
+    //Bone Animation
+
+
+
     //Player
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);

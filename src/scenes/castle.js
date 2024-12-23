@@ -38,7 +38,7 @@ export default async function castle(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"                               ",
+			"     :::::                      ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -53,6 +53,12 @@ export default async function castle(k, levelIdx) {
         tiles: {
             "=": () => [
                 sprite("grass", {}),
+                pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
+                area(),
+                body({ isStatic: true }),
+            ],
+            ":": () => [
+                sprite("flag_1", {}),
                 pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
                 area(),
                 body({ isStatic: true }),
