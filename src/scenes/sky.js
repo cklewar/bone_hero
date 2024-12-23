@@ -107,7 +107,6 @@ export default async function sky(k, levelIdx) {
 		},
 	})
 
-
     //Player
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);
@@ -116,56 +115,6 @@ export default async function sky(k, levelIdx) {
 	watchEntityHealth(k, playerState);
 
     //Enemy
-	entities.enemy = generateEnemyComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
-
-
-    //onCollideWithPlayer(k, entities.enemy);
-
-	/*
-	// Run the callback once every time we enter "idle" state.
-	// Here we stay "idle" for 0.5 second, then enter "attack" state.
-	enemy.onStateEnter("idle", async () => {
-		await wait(0.5);
-		enemy.enterState("attack");
-	});
-
-	// When we enter "attack" state, we fire a bullet, and enter "move" state after 1 sec
-	enemy.onStateEnter("attack", async () => {
-		// Don't do anything if player doesn't exist anymore
-		if (player.exists()) {
-			const dir = player.pos.sub(enemy.pos).unit();
-
-			add([
-				sprite("axe_1", { anim: "throw" }),
-				pos(enemy.pos),
-				area({ shape: new Rect(vec2(0, 16), 24, 24) }),
-				move(dir, 300),
-				scale(3),
-				area(),
-				offscreen({ destroy: true }),
-				anchor("center"),
-				"axe",
-			]);
-		}
-
-		// Waits 1 second to make the enemy enter in "move" state
-		await wait(1);
-		enemy.enterState("move");
-	});
-
-	// When we enter "move" state, we stay there for 2 sec and then go back to "idle"
-	enemy.onStateEnter("move", async () => {
-		await wait(2);
-		enemy.enterState("idle");
-	});
-
-	// .onStateUpdate() is similar to .onUpdate(), it'll run every frame, but in this case
-	// Only when the current state is "move"
-	enemy.onStateUpdate("move", () => {
-		// We move the enemy in the direction of the player
-		if (!player.exists()) return;
-		const dir = player.pos.sub(enemy.pos).unit();
-		enemy.move(dir.scale(ENEMY_SPEED));
-	});
-	*/
+	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+    onCollideWithPlayer(k, entities.player, "axe");
 }

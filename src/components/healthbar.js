@@ -20,9 +20,7 @@ export function healthBar(k) {
   }
 
   if (addHalfHeart) {
-    console.log(previousX);
     heartsContainer.add([k.sprite("heart_half"), k.pos(previousX, 0)]);
-
     previousX += 58;
   }
 

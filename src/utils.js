@@ -1,4 +1,6 @@
 import * as consts from "./const.js"
+import { playerState } from "./state/playerGlobalState.js";
+import { healthBar } from "./components/healthbar.js";
 
 export function playAnimIfNotPlaying(gameObj, animName) {
   if (gameObj.curAnim() !== animName) {
@@ -38,7 +40,7 @@ export function watchEntityHealth(k, entity) {
     });
 }
 
-export function onCollideWithPlayer(k, entity) {
+export function onCollideWithPlayer(k, player, entity) {
     player.onCollide(entity, async (player) => {
         if (player.isAttacking) return;
         playerState.setHealth(playerState.getHealth() - 0.5); //enemy.attackPower
