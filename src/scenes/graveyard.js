@@ -62,7 +62,7 @@ export default async function graveyard(k, levelIdx) {
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "graveyard", "sunset", get_scenes());
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "graveyard", "cave", get_scenes());
 	watchEntityHealth(k, playerState);
 
 	//Enemy

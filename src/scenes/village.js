@@ -63,7 +63,7 @@ export default async function village(k, levelIdx) {
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "village", "cave", get_scenes());
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "village", "graveyard", get_scenes());
 	watchEntityHealth(k, playerState);
 
 	//Enemy

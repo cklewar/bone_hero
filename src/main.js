@@ -44,14 +44,12 @@ k.setGravity(consts.GRAVITY);
 init_scenes(k);
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
+
 /*
 await delay(5000);
 k.scene("sky", ({levelIdx}) => sky(k, 1));
 k.go("sky", {levelIdx: 1});
 */
-
 //k.go("forest_and_castle", {levelIdx: 0});
-k.go("graveyard",{levelIdx: 0});
 
-
-
+k.go("castle",{levelIdx: 0});

@@ -12,8 +12,8 @@ const _scenes = {
   sky,
   forest_and_castle,
   village,
-  cave,
   graveyard,
+  cave,
   sunset,
   castle,
 };

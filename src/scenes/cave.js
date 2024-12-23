@@ -3,9 +3,11 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
-import * as consts from "../const.js"
+import { playerState } from "../state/playerGlobalState.js";
+import * as consts from "../const.js";
+import {get_scenes} from "./scenes.js";
 
 export default async function cave(k, levelIdx) {
   const entities = {
@@ -24,8 +26,22 @@ export default async function cave(k, levelIdx) {
 	// level layouts
 	const levels = [
 		[
-			"                                        ",
-			"========================================",
+		    "                               ",
+		    "                               ",
+		    "                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"===============================",
 		],
 	]
 
@@ -45,6 +61,6 @@ export default async function cave(k, levelIdx) {
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "graveyard", get_scenes());
+	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "sunset", get_scenes());
 	watchEntityHealth(k, playerState);
 }

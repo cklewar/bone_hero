@@ -3,6 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
+import { generateBossComponents } from "../entities/boss.js";
 import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
@@ -11,6 +12,7 @@ import {get_scenes} from "./scenes.js";
 
 export default async function castle(k, levelIdx) {
     const entities = {
+        boss: null,
         player: null,
         enemy: null,
     };
@@ -58,7 +60,16 @@ export default async function castle(k, levelIdx) {
         },
     })
 
+    k.add([
+
+    ])
+
+    //Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
-    healthBar(k);
+	healthBar(k);
 	setPlayerControls(k, entities.player);
+	watchEntityHealth(k, playerState);
+
+    //Boss
+    entities.boss = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level);
 }

@@ -41,14 +41,17 @@ export default async function sky(k, levelIdx) {
 	// level layouts
 	const levels = [
 		[
+		    "                   :::::       ",
+			"                               ",
+			"          ::::::               ",
 			"                               ",
 			"                               ",
 			"                               ",
 			"                               ",
-			"            ::::::             ",
+			"       :::::             ::::  ",
 			"                               ",
-			"     :::::                     ",
-			"                      ::::     ",
+			"                               ",
+			"                               ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -56,6 +59,9 @@ export default async function sky(k, levelIdx) {
 			"===============================",
 		],
 		[
+		    "                               ",
+			"                               ",
+			"                               ",
 		    "                               ",
 			"                               ",
 			"                               ",
@@ -71,6 +77,9 @@ export default async function sky(k, levelIdx) {
 			"===============================",
 		],
 		[
+		    "                               ",
+			"                               ",
+			"                               ",
 		    "                               ",
 			"                               ",
 			"                               ",
@@ -94,7 +103,7 @@ export default async function sky(k, levelIdx) {
 		tiles: {
 			"=": () => [
 				sprite("grass", {}),
-				pos(0, height() - 800),
+				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
 			],

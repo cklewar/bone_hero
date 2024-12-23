@@ -25,14 +25,17 @@ export default async function forest_and_castle(k, levelIdx) {
 
 	const levels = [
 		[
+		    "                               ",
+		    "                               ",
+		    "                               ",
 			"                               ",
-			"                               ",
-			"                               ",
-			"                               ",
-			"            ::::::             ",
-			"                               ",
+			"                     :::       ",
+			"           :::::               ",
 			"     :::::                     ",
-			"                      ::::     ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -40,6 +43,9 @@ export default async function forest_and_castle(k, levelIdx) {
 			"===============================",
 		],
 		[
+			"                               ",
+		    "                               ",
+		    "                               ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -55,6 +61,9 @@ export default async function forest_and_castle(k, levelIdx) {
 			"===============================",
 		],
 		[
+			"                               ",
+		    "                               ",
+		    "                               ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -78,7 +87,7 @@ export default async function forest_and_castle(k, levelIdx) {
             tiles: {
                 "=": () => [
                     sprite("grass", {}),
-                    pos(0, height() - 800),
+                    pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
                     area(),
                     body({ isStatic: true }),
                 ],
