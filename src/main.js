@@ -55,11 +55,11 @@ for (const sceneName in consts.scenes) {
 }
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
-
-//k.scene("sky", ({levelIdx}) => consts.sky(k, 0));
-k.go("sky", {levelIdx: 0});
 /*
 await delay(5000);
 k.scene("sky", ({levelIdx}) => sky(k, 1));
 k.go("sky", {levelIdx: 1});
 */
+
+k.go("forest_and_castle", {levelIdx: 0});
+

@@ -5,7 +5,7 @@ import {
 import { watchPlayerOffScreen } from "../utils.js";
 import * as consts from "../const.js"
 
-export default async function forest_and_castle(k) {
+export default async function forest_and_castle(k, levelIdx) {
     const entities = {
         player: null,
         enemy: null,
@@ -19,25 +19,72 @@ export default async function forest_and_castle(k) {
 			})
 	])
 
-    const levelIdx = 0
 	const levels = [
 		[
-			"                                        ",
-			"========================================",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"            ::::::             ",
+			"                               ",
+			"     :::::                     ",
+			"                      ::::     ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"===============================",
+		],
+		[
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"     :::::                     ",
+			"                 :::::::::     ",
+			"                            :  ",
+			"        :::::               :  ",
+			"                            :  ",
+			"                            :  ",
+			"===============================",
+		],
+		[
+			"                               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"           ::::::::::          ",
+			"                               ",
+			"    ::::                       ",
+			"                               ",
+			"            ::::               ",
+			"                               ",
+			"                               ",
+			"                               ",
+			"===============================",
 		],
 	]
 
-	const level = addLevel(levels[levelIdx], {
-		tileWidth: 64,
-		tileHeight: 64,
-		tiles: {
-			"=": () => [
-				sprite("grass", {}),
-				pos(0, height() - 100),
-				area(),
-				body({ isStatic: true }),
-			],
-		},
+    const level = k.addLevel(levels[levelIdx], {
+            tileWidth: 64,
+            tileHeight: 64,
+
+            tiles: {
+                "=": () => [
+                    sprite("grass", {}),
+                    pos(0, height() - 800),
+                    area(),
+                    body({ isStatic: true }),
+                ],
+                ":": () => [
+                    sprite("block_1", {}),
+                    pos(40, 400),
+                    area(),
+                    body({ isStatic: true }),
+                ]
+            },
 	})
 
 	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);

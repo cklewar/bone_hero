@@ -5,7 +5,7 @@ import {
 import { watchPlayerOffScreen } from "../utils.js";
 import * as consts from "../const.js"
 
-export default async function cave(k) {
+export default async function cave(k, levelIdx) {
   const entities = {
     player: null,
     enemy: null,
@@ -20,7 +20,6 @@ export default async function cave(k) {
 	])
 
 	// level layouts
-	const levelIdx = 0
 	const levels = [
 		[
 			"                                        ",
