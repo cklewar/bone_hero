@@ -33,6 +33,7 @@ k.loadSprite("sunset_1", "sprites/sunset.png");
 k.loadSprite("stone_1", "sprites/stone.png");
 k.loadSprite("bone_1", "sprites/bone_1.png");
 k.loadSprite("flag_1", "sprites/flag_1.png");
+k.loadSprite("baumstamm_1", "sprites/baumstamm_1.png");
 k.loadSprite("stalacknieten_1", "sprites/stalacknieten_1.png");
 
 k.loadSpriteAtlas("sprites/daemon_3.png", "sprites/daemon_3.json");

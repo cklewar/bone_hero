@@ -78,11 +78,10 @@ export default async function graveyard(k, levelIdx) {
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
+				"tile_grave",
 			],
 		},
 	})
-
-
 
 	//Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);

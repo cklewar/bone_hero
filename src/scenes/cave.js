@@ -60,6 +60,7 @@ export default async function cave(k, levelIdx) {
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
+
 			],
 		},
 	})
