@@ -1,10 +1,11 @@
+import { enemyState } from "../state/enemyState.js";
 import * as consts from "../const.js";
 
 export function generateEnemyComponents(k, pos, level, player) {
     const enemy = level.spawn(
         [
             k.sprite("enemy_1", { anim: "idle" }),
-            k.area({ shape: new k.Rect(vec2(0, 0), 12, 35)}),
+            k.area({ shape: new k.Rect(vec2(10, -5), 35, 50)}),
             k.body(),
             k.pos(pos),
             k.opacity(),
@@ -14,11 +15,11 @@ export function generateEnemyComponents(k, pos, level, player) {
             k.tile(),
             {
               speed: 340,
-              attackPower: 1,
+              attackPower: 0.5,
               direction: "left",
               isAttacking: false,
-              isFrozen: false,
-              weapon: null,
+              weapon: "axe",
+              entityState: enemyState,
             },
             "enemy",
         ], 2, 2);
@@ -29,10 +30,14 @@ export function generateEnemyComponents(k, pos, level, player) {
     });
 
     enemy.onStateEnter("attack", async () => {
+        if (!enemy.exists()) {
+            return;
+        }
+
 		if (player.exists()) {
 			const dir = player.pos.sub(enemy.pos).unit();
 
-			add([
+			k.add([
 				k.sprite("axe_1", { anim: "throw" }),
 				k.pos(enemy.pos),
 				k.area({ shape: new Rect(vec2(0, 16), 24, 24) }),
@@ -41,7 +46,8 @@ export function generateEnemyComponents(k, pos, level, player) {
 				k.area(),
 				k.offscreen({ destroy: true }),
 				k.anchor("center"),
-				"axe",
+				enemy.weapon,
+				"enemy",
 			]);
 		}
 

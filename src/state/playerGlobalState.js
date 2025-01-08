@@ -35,4 +35,4 @@ export default function playerGlobalStateManager() {
     };
   }
 
-  export const playerState = playerGlobalStateManager().getInstance();
+export const playerState = playerGlobalStateManager().getInstance();

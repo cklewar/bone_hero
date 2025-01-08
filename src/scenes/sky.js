@@ -3,9 +3,10 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
+import { enemyState } from "../state/enemyState.js";
 import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
 
@@ -136,5 +137,6 @@ export default async function sky(k, levelIdx) {
 
     //Enemy
 	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.ENEMY_START_POS_Y_OFFSET), level, entities.player);
-    onCollideWithPlayer(k, entities.player, "axe");
+	watchEntityHealth(k, enemyState);
+    onCollideWith(k, entities.player, "axe");
 }

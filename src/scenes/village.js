@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWithPlayer } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import * as consts from "../const.js";
@@ -68,5 +68,5 @@ export default async function village(k, levelIdx) {
 
 	//Enemy
 	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
-    onCollideWithPlayer(k, entities.player, "axe");
+    onCollideWith(k, entities.player, "axe");
 }

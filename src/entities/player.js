@@ -1,3 +1,4 @@
+import { playerState } from "../state/playerGlobalState.js";
 import { playAnimIfNotPlaying} from "../utils.js";
 import * as consts from "../const.js"
 
@@ -30,7 +31,7 @@ export function generatePlayerComponents(k, pos, level) {
     const player = level.spawn(
         [
             k.sprite("hero_2", { anim: "idle" }),
-            k.area({ shape: new k.Rect(vec2(0, 0), 12, 35)}),
+            k.area({ shape: new k.Rect(vec2(-15, -5), 20, 50)}),
             k.body(),
             k.pos(pos),
             k.opacity(),
@@ -38,30 +39,33 @@ export function generatePlayerComponents(k, pos, level) {
             k.anchor("center"),
             k.tile(),
             {
+              type: "player",
               speed: 340,
               attackPower: 1,
               direction: "left",
               isAttacking: false,
               isFrozen: false,
-              weapon: null,
+              weapon: "sword",
+              entityState: playerState,
+              shake: 1,
             },
             "player",
         ], 2, 2);
 
     const weapon = player.add([
         k.pos(-20, 10),
+        k.area({ shape: new Rect(vec2(0, 5), 20, 60) }),
         k.sprite("sword"),
         k.anchor("bot"),
         k.rotate(60),
         k.scale(0.7),
         spin(),
-        "weapon",
+        player.weapon,
     ]);
 
     playAnimIfNotPlaying(player, "idle");
     player.onGround((i) => {
         if (i.is("tile_grave")) {
-            console.log(i);
             i.move(0, 1000);
         }
     })
@@ -101,7 +105,7 @@ export function setPlayerControls(k, player) {
         }
 
         if (["f"].includes(key)) {
-            const weapon = player.get("weapon");
+            const weapon = player.get(player.weapon);
             weapon[0].spin();
             return;
         }

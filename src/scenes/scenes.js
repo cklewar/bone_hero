@@ -6,6 +6,8 @@ import sunset from "./sunset.js";
 import castle from "./castle.js";
 import cave from "./cave.js";
 import intro from "./intro.js";
+import end from "./end.js";
+import game_over from "./game_over.js";
 
 const _scenes = {
   intro,
@@ -16,6 +18,8 @@ const _scenes = {
   cave,
   sunset,
   castle,
+  end,
+  game_over,
 };
 
 export default function sceneManager() {

@@ -1,5 +1,4 @@
 import * as consts from "./const.js"
-import { playerState } from "./state/playerGlobalState.js";
 import { healthBar } from "./components/healthbar.js";
 
 export function playAnimIfNotPlaying(gameObj, animName) {
@@ -31,21 +30,26 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
 	});
 }
 
-export function watchEntityHealth(k, entity) {
+export function watchEntityHealth(k, entity, entities) {
     k.onUpdate(() => {
-        if (entity.getHealth() <= 0) {
-            //playerState.setHealth(playerState.getMaxHealth());
-            k.go("game_over");
+        if (entity.entityState.getHealth() <= 0) {
+            if (entity.type === "player") {
+                //entity.setHealth(entity.getMaxHealth());
+                k.go("game_over", 0);
+            } else {
+                k.destroyAll("enemy");
+                entity.destroy();
+            }
         }
     });
 }
 
-export function onCollideWithPlayer(k, player, entity) {
-    player.onCollide(entity, async (player) => {
-        if (player.isAttacking) return;
-        playerState.setHealth(playerState.getHealth() - 0.5); //enemy.attackPower
-        k.destroyAll("healthContainer");
-        healthBar(k, player);
-        shake(1);
+export function onCollideWith(k, entity_a, entity_a_state, entity_b) {
+    entity_a.onCollide(entity_b.weapon, (entity_a) => {
+        //console.log("A:", entity_a);
+        //console.log("B:", entity_b);
+        entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
+        healthBar(k, entity_a);
+        shake( entity_a.shake);
     });
 }
