@@ -51,7 +51,7 @@ export function generateEnemyComponents(k, pos, level, player) {
 			]);
 		}
 
-		// Waits 1 second to make the enemy enter in "move" state
+		// Waits 1 second to make the boss enter in "move" state
 		await wait(1);
 		enemy.enterState("move");
 	});
@@ -62,7 +62,7 @@ export function generateEnemyComponents(k, pos, level, player) {
 	});
 
 	enemy.onStateUpdate("move", () => {
-		// We move the enemy in the direction of the player
+		// We move the boss in the direction of the player
 		if (!player.exists()) return;
 		const dir = player.pos.sub(enemy.pos).unit();
 		enemy.move(dir.scale(consts.ENEMY_SPEED));

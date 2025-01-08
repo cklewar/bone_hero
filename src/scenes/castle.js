@@ -35,10 +35,10 @@ export default async function castle(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"                               ",
-			"                               ",
-			"                               ",
 			"     :::::                     ",
+			"                               ",
+			"                               ",
+			"                               ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -58,7 +58,7 @@ export default async function castle(k, levelIdx) {
                 body({ isStatic: true }),
             ],
             ":": () => [
-                sprite("baumstamm_1", {}),
+                sprite("stamm_1", {}),
                 pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
                 area(),
                 body({ isStatic: true }),
@@ -77,7 +77,7 @@ export default async function castle(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
 	//Boss
-    entities.boss = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level);
+    entities.boss = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
 
 	//Enemy
 	//entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
