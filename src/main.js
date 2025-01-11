@@ -48,4 +48,4 @@ k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("castle",{levelIdx: 0});
+k.go("sky",{levelIdx: 0});
