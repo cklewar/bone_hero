@@ -128,12 +128,12 @@ export default async function sky(k, levelIdx) {
         k.destroy(bone);
     }
 
-    //Player
-	entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+     //Player
+    entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
-	watchEntityHealth(k, playerState);
+	watchEntityHealth(k, entities.player);
 
     //Enemy
 	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.ENEMY_START_POS_Y_OFFSET), level, entities.player);
