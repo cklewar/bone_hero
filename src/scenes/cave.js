@@ -65,18 +65,19 @@ export default async function cave(k, levelIdx) {
 		},
 	})
 
-    //Player
+	//Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "sunset", get_scenes());
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "sunset", get_scenes());
 	watchEntityHealth(k, entities.player);
 
-	//Enemy
-	//entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
-    //watchEntityHealth(k, entities.enemy, entities);
+    //Enemy
+	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+    watchEntityHealth(k, entities.enemy, entities);
 
     //Collide
-    //onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-    //onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+    onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
+    onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+
 }
