@@ -5,8 +5,8 @@ export function generateBossComponents(k, pos, level, player) {
     const boss = level.spawn(
 		[
 			k.sprite("daemon_6", { anim: "idle" }),
-			k.area({ shape: new Rect(vec2(0, -2), 128, 125) }),
-			k.scale(3),
+			k.area({ shape: new Rect(vec2(0, 55), 128, 125) }),
+			k.scale(2),
 			k.pos(pos),
 			k.body(),
 			k.anchor("center"),
@@ -24,7 +24,7 @@ export function generateBossComponents(k, pos, level, player) {
 		], 2, 2,
 	);
 
-    boss.onStateEnter("idle", async () => {
+    /*boss.onStateEnter("idle", async () => {
         await wait(0.5);
         boss.enterState("attack");
     });
@@ -66,7 +66,7 @@ export function generateBossComponents(k, pos, level, player) {
 		if (!player.exists()) return;
 		const dir = player.pos.sub(boss.pos).unit();
 		boss.move(dir.scale(consts.ENEMY_SPEED));
-	});
+	});*/
 
   return boss;
 }
