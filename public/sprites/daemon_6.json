@@ -1,0 +1,17 @@
+{
+  "daemon_6": {
+    "x": 0,
+    "y": 0,
+    "width": 2048,
+    "height": 1900,
+    "sliceX": 18,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 17,
+        "speed": 3,
+        "loop": false
+      }
+    }
+  }
+}

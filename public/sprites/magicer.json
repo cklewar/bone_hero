@@ -1,0 +1,17 @@
+{
+  "magicer": {
+    "x": 0,
+    "y": 0,
+    "width": 2048,
+    "height": 1900,
+    "sliceX": 33,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 32,
+        "speed": 10,
+        "loop": true
+      }
+    }
+  }
+}

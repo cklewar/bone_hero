@@ -12,7 +12,7 @@ const k = kaplay({
 	debug: true,
 });
 
-debug.inspect = true;
+debug.inspect = false;
 
 k.loadRoot("./"); // A good idea for Itch.io publishing later
 k.loadSprite("sky", "sprites/sky_1.png");
@@ -39,13 +39,16 @@ k.loadSprite("bone_1", "sprites/bone_1.png");
 k.loadSprite("flag_1", "sprites/flag_1.png");
 k.loadSprite("stamm_1", "sprites/stamm_1.png");
 k.loadSprite("stalacknieten_1", "sprites/stalacknieten_1.png");
+k.loadSprite("korb_1", "sprites/korb_1.png");
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
 k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
 k.loadSpriteAtlas("sprites/grave_3.png", "sprites/grave_3.json");
 k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
+k.loadSpriteAtlas("sprites/magicer.png", "sprites/magicer.json");
+k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
 
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("sky",{levelIdx: 0});
+k.go("village",{levelIdx: 0});

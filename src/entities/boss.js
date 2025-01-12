@@ -4,7 +4,7 @@ import * as consts from "../const.js";
 export function generateBossComponents(k, pos, level, player) {
     const boss = level.spawn(
 		[
-			k.sprite("daemon_4", { anim: "idle" }),
+			k.sprite("daemon_6", { anim: "idle" }),
 			k.area({ shape: new Rect(vec2(0, -2), 128, 125) }),
 			k.scale(3),
 			k.pos(pos),

@@ -12,7 +12,8 @@ import {get_scenes} from "./scenes.js";
 
 export default async function castle(k, levelIdx) {
     const entities = {
-        boss: null,
+        boss1: null,
+        boss2: null,
         player: null,
         enemy: null,
     };
@@ -77,7 +78,8 @@ export default async function castle(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
 	//Boss
-    entities.boss = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
+    //entities.boss1 = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
+    entities.boss2 = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
 
 	//Enemy
 	//entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
