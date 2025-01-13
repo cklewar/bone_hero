@@ -51,4 +51,4 @@ k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("village",{levelIdx: 0});
+k.go("castle",{levelIdx: 0});
