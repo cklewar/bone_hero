@@ -53,3 +53,29 @@ export function onCollideWith(k, entity_a, entity_a_state, entity_b) {
         shake( entity_a.shake);
     });
 }
+
+export function addFlamebar(position = vec2(0), angle = 0, num = 6) {
+    // Create a parent game object for position and rotation
+    const flameHead = add([
+        pos(position),
+        rotate(angle),
+    ]);
+
+    // Add each section of flame as children
+    for (let i = 0; i < num; i++) {
+        flameHead.add([
+            sprite("fireball_1"),
+            pos(0, i * 42),
+            area(),
+            anchor("center"),
+            "flame",
+        ]);
+    }
+
+    // The flame head's rotation will affect all its children
+    flameHead.onUpdate(() => {
+        flameHead.angle += dt() * 60;
+    });
+
+    return flameHead;
+}

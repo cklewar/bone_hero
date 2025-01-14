@@ -40,10 +40,8 @@ k.loadSprite("flag_1", "sprites/flag_1.png");
 k.loadSprite("stamm_1", "sprites/stamm_1.png");
 k.loadSprite("stalacknieten_1", "sprites/stalacknieten_1.png");
 k.loadSprite("korb_1", "sprites/korb_1.png");
-k.loadSprite("", "sprites/korb_1.png");
-
-
-
+k.loadSprite("wappen_1", "sprites/wappen.png");
+k.loadSprite("fireball_1", "sprites/fireball.png");
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
 k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
@@ -51,6 +49,8 @@ k.loadSpriteAtlas("sprites/grave_3.png", "sprites/grave_3.json");
 k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
 k.loadSpriteAtlas("sprites/magicer.png", "sprites/magicer.json");
 k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
+k.loadSpriteAtlas("sprites/ghost_3.png", "sprites/ghost_3.json");
+k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
 
 k.setGravity(consts.GRAVITY);
 
