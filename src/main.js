@@ -40,6 +40,10 @@ k.loadSprite("flag_1", "sprites/flag_1.png");
 k.loadSprite("stamm_1", "sprites/stamm_1.png");
 k.loadSprite("stalacknieten_1", "sprites/stalacknieten_1.png");
 k.loadSprite("korb_1", "sprites/korb_1.png");
+k.loadSprite("", "sprites/korb_1.png");
+
+
+
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
 k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
@@ -51,4 +55,4 @@ k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("castle",{levelIdx: 0});
+k.go("village",{levelIdx: 0});
