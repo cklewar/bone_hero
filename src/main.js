@@ -40,6 +40,7 @@ k.loadSprite("flag_1", "sprites/flag_1.png");
 k.loadSprite("stamm_1", "sprites/stamm_1.png");
 k.loadSprite("stalacknieten_1", "sprites/stalacknieten_1.png");
 k.loadSprite("korb_1", "sprites/korb_1.png");
+k.loadSprite("fireball_1", "sprites/fireball.png");
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
 k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
