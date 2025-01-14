@@ -1,0 +1,18 @@
+{
+  "ghost_3": {
+    "x": 0,
+    "y": 0,
+    "width": 192,
+    "height": 64,
+    "sliceX": 15,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 14,
+        "speed": 5,
+        "loop": true
+      },
+      "hit": 8
+    }
+  }
+}
