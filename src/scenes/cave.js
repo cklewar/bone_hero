@@ -2,7 +2,7 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
-import { generateEnemyComponents } from "../entities/enemy.js";
+import { generateEnemyComponents, generateEnemyComponentsSpecial} from "../entities/enemy.js";
 import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
@@ -73,7 +73,7 @@ export default async function cave(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
     //Enemy
-	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+	entities.enemy = generateEnemyComponentsSpecial(k, "bat_1", k.vec2(width() / 2, height() - 600), level, entities.player);
     watchEntityHealth(k, entities.enemy, entities);
 
     //Collide

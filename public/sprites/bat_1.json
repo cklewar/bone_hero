@@ -2,14 +2,14 @@
   "bat_1": {
     "x": 0,
     "y": 0,
-    "width": 192,
-    "height": 64,
+    "width": 1280,
+    "height": 256,
     "sliceX": 5,
     "anims": {
       "idle": {
         "from": 0,
         "to": 4,
-        "speed": 5,
+        "speed": 2,
         "loop": true
       },
       "hit": 8
