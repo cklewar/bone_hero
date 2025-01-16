@@ -12,7 +12,7 @@ const k = kaplay({
 	debug: true,
 });
 
-debug.inspect = true;
+debug.inspect = false;
 
 k.loadRoot("./"); // A good idea for Itch.io publishing later
 k.loadSprite("sky", "sprites/sky_1.png");

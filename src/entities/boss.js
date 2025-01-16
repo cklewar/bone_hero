@@ -1,21 +1,18 @@
 import { bossState } from "../state/bossState.js";
 import * as consts from "../const.js";
 
-const collision_map = new Map([
-  ["boss_1", { vec_x: 0, vec_y: 55, rect_x: 128, rect_y: 125 }],
-  ["boss_2", { vec_x: 0, vec_y: 55, rect_x: 128, rect_y: 125 }],
+const boss_attrs = new Map([
+  ["boss_1", { vec_x: 15, vec_y: 55, rect_x: 220, rect_y: 120, png: "daemon_6", body: false}],
+  ["boss_2", { vec_x: 0, vec_y: 0, rect_x: 128, rect_y: 130, png: "daemon_4", body: true}],
 ]);
 
 export function generateBossComponents(k, boss_type, pos, level, player) {
-    var c_map = collision_map.get("boss_1")
-
-    const boss = level.spawn(
-		[
-			k.sprite("daemon_6", { anim: "idle" }),
-			k.area({ shape: new Rect(vec2(c_map.vec_x, c_map.vec_y), c_map.rect_x, c_map.rect_y) }),
+    var attr = boss_attrs.get(boss_type);
+    var items = [
+			k.sprite(attr.png, { anim: "idle" }),
+			k.area({ shape: new Rect(vec2(attr.vec_x, attr.vec_y), attr.rect_x, attr.rect_y) }),
 			k.scale(2),
 			k.pos(pos),
-			//k.body(),
 			k.anchor("center"),
 			k.state("move", ["idle", "attack", "move"]),
 			k.tile(),
@@ -28,8 +25,10 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
               entityState: bossState,
             },
             "boss"
-		], 2, 2,
-	);
+		];
+
+    if (attr.body) items.push(k.body())
+    const boss = level.spawn(items, 2, 2);
 
     /*boss.onStateEnter("idle", async () => {
         await wait(0.5);
