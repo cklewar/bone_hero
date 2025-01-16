@@ -33,7 +33,7 @@ export default async function village(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"                               ",
+			"      :::::                    ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -52,6 +52,12 @@ export default async function village(k, levelIdx) {
 		tiles: {
 			"=": () => [
 				sprite("grass", {}),
+				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
+				area(),
+				body({ isStatic: true }),
+			],
+			":": () => [
+				sprite("korb_1", {}),
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
