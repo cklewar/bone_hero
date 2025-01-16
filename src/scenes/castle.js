@@ -84,10 +84,13 @@ export default async function castle(k, levelIdx) {
 
 	//Boss
     //entities.boss1 = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
-    entities.boss2 = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
+    entities.boss2 = generateBossComponents(k, "boss_2", k.vec2(width() / 2, height() - 400), level, entities.player);
     await wait(2);
 
-	for (let i = 0; i < height() / 25; i++) {
+    console.log(height());
+    console.log(entities.boss2.height);
+
+	for (let i = 0; i < height(); i++) {
 	    var cur_pos = entities.boss2.pos;
 	    //console.log("CUR_POS", cur_pos.x, cur_pos.y + i);
         entities.boss2.move(0, -cur_pos.y + i);

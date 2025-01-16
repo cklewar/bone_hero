@@ -1,11 +1,18 @@
 import { bossState } from "../state/bossState.js";
 import * as consts from "../const.js";
 
-export function generateBossComponents(k, pos, level, player) {
+const collision_map = new Map([
+  ["boss_1", { vec_x: 0, vec_y: 55, rect_x: 128, rect_y: 125 }],
+  ["boss_2", { vec_x: 0, vec_y: 55, rect_x: 128, rect_y: 125 }],
+]);
+
+export function generateBossComponents(k, boss_type, pos, level, player) {
+    var c_map = collision_map.get("boss_1")
+
     const boss = level.spawn(
 		[
 			k.sprite("daemon_6", { anim: "idle" }),
-			k.area({ shape: new Rect(vec2(0, 55), 128, 125) }),
+			k.area({ shape: new Rect(vec2(c_map.vec_x, c_map.vec_y), c_map.rect_x, c_map.rect_y) }),
 			k.scale(2),
 			k.pos(pos),
 			//k.body(),
