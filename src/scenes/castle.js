@@ -59,7 +59,7 @@ export default async function castle(k, levelIdx) {
                 body({ isStatic: true }),
             ],
             ":": () => [
-                sprite("stamm_1", {}),
+                sprite("wappen_1", {}),
                 pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
                 area(),
                 body({ isStatic: true }),
