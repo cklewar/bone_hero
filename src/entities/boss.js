@@ -3,7 +3,7 @@ import * as consts from "../const.js";
 
 const boss_attrs = new Map([
   ["boss_1", { vec_x: 15, vec_y: 55, rect_x: 220, rect_y: 120, png: "daemon_6", body: false}],
-  ["boss_2", { vec_x: 0, vec_y: 0, rect_x: 128, rect_y: 130, png: "daemon_4", body: true}],
+  ["boss_2", { vec_x: 0, vec_y: -5, rect_x: 128, rect_y: 130, png: "daemon_4", body: true}],
 ]);
 
 export function generateBossComponents(k, boss_type, pos, level, player) {
