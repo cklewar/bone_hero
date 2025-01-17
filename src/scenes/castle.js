@@ -53,7 +53,7 @@ export default async function castle(k, levelIdx) {
         tileHeight: 64,
         tiles: {
             "=": () => [
-                sprite("grass", {}),
+                sprite("wappen_1", {}),
                 pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
                 area(),
                 body({ isStatic: true }),
