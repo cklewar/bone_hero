@@ -36,10 +36,10 @@ export default async function castle(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
+ 			"                               ",
+			"                               ",
+ 			"                               ",
 			"     :::::                     ",
-			"                               ",
-			"                               ",
-			"                               ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -72,9 +72,7 @@ export default async function castle(k, levelIdx) {
     ])
 
     //Objects
-    addFlamebar(vec2(350, 600), -40, 8);
-    //addFlamebar(vec2(480, 100), 180);
-    //addFlamebar(vec2(400, 480), 0);
+    addFlamebar(vec2(600, 760), -60, 8);
 
     //Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
@@ -83,16 +81,17 @@ export default async function castle(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
 	//Boss
-    //entities.boss1 = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
-    entities.boss2 = generateBossComponents(k, k.vec2(width() / 2, height() - 400), level, entities.player);
+    entities.boss1 = generateBossComponents(k, "boss_1", k.vec2(width() / 2, height() - 420), level, entities.player);
     await wait(2);
 
-	for (let i = 0; i < height() / 25; i++) {
-	    var cur_pos = entities.boss2.pos;
-	    //console.log("CUR_POS", cur_pos.x, cur_pos.y + i);
-        entities.boss2.move(0, -cur_pos.y + i);
+	for (let i = 0; i < 45; i++) {
+	    var cur_pos = entities.boss1.pos;
+        entities.boss1.move(0, -cur_pos.y + i);
         await wait(0.01);
     }
+
+    entities.boss1.destroy();
+    entities.boss2 = generateBossComponents(k, "boss_2", k.vec2(width() / 2, height() / 100), level, entities.player);
 
 	//Enemy
 	//entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);

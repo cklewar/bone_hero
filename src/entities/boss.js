@@ -1,14 +1,18 @@
 import { bossState } from "../state/bossState.js";
 import * as consts from "../const.js";
 
-export function generateBossComponents(k, pos, level, player) {
-    const boss = level.spawn(
-		[
-			k.sprite("daemon_6", { anim: "idle" }),
-			k.area({ shape: new Rect(vec2(0, 55), 128, 125) }),
+const boss_attrs = new Map([
+  ["boss_1", { vec_x: 15, vec_y: 55, rect_x: 220, rect_y: 120, png: "daemon_6", body: false}],
+  ["boss_2", { vec_x: 0, vec_y: -5, rect_x: 128, rect_y: 130, png: "daemon_4", body: true}],
+]);
+
+export function generateBossComponents(k, boss_type, pos, level, player) {
+    var attr = boss_attrs.get(boss_type);
+    var items = [
+			k.sprite(attr.png, { anim: "idle" }),
+			k.area({ shape: new Rect(vec2(attr.vec_x, attr.vec_y), attr.rect_x, attr.rect_y) }),
 			k.scale(2),
 			k.pos(pos),
-			//k.body(),
 			k.anchor("center"),
 			k.state("move", ["idle", "attack", "move"]),
 			k.tile(),
@@ -21,8 +25,10 @@ export function generateBossComponents(k, pos, level, player) {
               entityState: bossState,
             },
             "boss"
-		], 2, 2,
-	);
+		];
+
+    if (attr.body) items.push(k.body())
+    const boss = level.spawn(items, 2, 2);
 
     /*boss.onStateEnter("idle", async () => {
         await wait(0.5);
