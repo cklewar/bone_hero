@@ -59,4 +59,4 @@ k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("castle",{levelIdx: 0});
+k.go("cave",{levelIdx: 0});

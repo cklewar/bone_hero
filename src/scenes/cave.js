@@ -2,7 +2,7 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../entities/player.js";
-import { generateEnemyComponents, generateEnemyComponentsSpecial} from "../entities/enemy.js";
+import { generateEnemyComponents} from "../entities/enemy.js";
 import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
@@ -12,7 +12,8 @@ import {get_scenes} from "./scenes.js";
 export default async function cave(k, levelIdx) {
   const entities = {
     player: null,
-    enemy: null,
+    bat1: null,
+	bat2: null,
   };
 
   add([
@@ -50,7 +51,7 @@ export default async function cave(k, levelIdx) {
 		tileHeight: 64,
 		tiles: {
 			"=": () => [
-				sprite("grass", {}),
+				sprite("boden_1", {}),
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
@@ -73,11 +74,12 @@ export default async function cave(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
     //Enemy
-	entities.enemy = generateEnemyComponentsSpecial(k, "bat_1", k.vec2(width() / 2, height() - 600), level, entities.player);
-    watchEntityHealth(k, entities.enemy, entities);
+	entities.bat1 = generateEnemyComponents(k, "bat", k.vec2(width() / 2, height() - 250), level, entities.player);
+	entities.bat2 = generateEnemyComponents(k, "bat", k.vec2(width() / 5, height() - 600), level, entities.player);
+	
+    //watchEntityHealth(k, entities.enemy, entities);
 
     //Collide
-    onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-    onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
-
+    onCollideWith(k, entities.player, entities.player.entityState, entities.bat1);
+	onCollideWith(k, entities.player, entities.player.entityState, entities.bat2);
 }

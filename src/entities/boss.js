@@ -27,7 +27,7 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
             "boss"
 		];
 
-    if (attr.body) items.push(k.body())
+    if (attr.body) items.push(k.body());
     const boss = level.spawn(items, 2, 2);
 
     if (attr.move) {

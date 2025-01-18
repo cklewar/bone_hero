@@ -35,7 +35,7 @@ export default async function graveyard(k, levelIdx) {
 			"                             : ",
 			"       ::::::::::            : ",
 			"      :                        ",
-			"                               ",
+			"     :                         ",
 			"                               ",
 			"                               ",
 			"                               ",
