@@ -92,7 +92,7 @@ export default async function forest_and_castle(k, levelIdx) {
                     body({ isStatic: true }),
                 ],
                 ":": () => [
-                    sprite("block_1", {}),
+                    sprite("stamm_1", {}),
                     pos(40, 400),
                     area(),
                     body({ isStatic: true }),
