@@ -6,10 +6,37 @@ const boss_attrs = new Map([
   ["boss_2", { vec_x: 0, vec_y: -5, rect_x: 128, rect_y: 130, png: "daemon_4", body: false, scale: 2, move: true}],
 ]);
 
+function follow(player) {
+    let follow = false;
+    return {
+        id: "follow",
+        update() {
+            var deg = 0;
+
+            if (player.pos.x > this.pos.x) {
+                deg = -Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (180 / Math.PI)));
+            } else {
+                deg = Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (-180 / Math.PI)));
+            }
+
+            //console.log(deg);
+            if (deg > 0) {
+                this.angle = 90 - deg;
+            } else {
+                this.angle = 90 + deg;
+            }
+        },
+        follow() {
+            follow = true;
+        },
+    };
+}
+
 export function generateBossComponents(k, boss_type, pos, level, player) {
     var attr = boss_attrs.get(boss_type);
     var items = [
 			k.sprite(attr.png, { anim: "idle" }),
+			//k.sprite("spike_1", {}),
 			k.area({ shape: new Rect(vec2(attr.vec_x, attr.vec_y), attr.rect_x, attr.rect_y) }),
 			k.scale(attr.scale),
 			k.pos(pos),
@@ -44,15 +71,7 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
             var deg = 0;
             if (player.exists()) {
                 const dir = player.pos.sub(boss.pos).unit();
-
-                if (player.pos.x > boss.pos.x) {
-                    deg = Math.floor(Math.atan2(player.pos.y, player.pos.x) * (-180 / Math.PI));
-                } else {
-                    deg = Math.floor(Math.atan2(player.pos.y, player.pos.x) * (90 / Math.PI));
-                }
-
                 k.add([
-                    //k.sprite("spike_1", { anim: "throw" }),
                     k.sprite("spike_1", {}),
                     k.pos(boss.pos),
                     k.area({ shape: new Rect(vec2(0, 16), 24, 24) }),
@@ -62,6 +81,7 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
                     k.area(),
                     k.offscreen({ destroy: true }),
                     k.anchor("center"),
+                    follow(player),
                     boss.weapon,
                     "boss",
                 ]);
@@ -84,5 +104,6 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
             boss.move(dir.scale(consts.ENEMY_SPEED));
 	    });
     }
+
   return boss;
 }
