@@ -19,7 +19,7 @@ function follow(player) {
                 deg = Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (-180 / Math.PI)));
             }
 
-            //console.log(deg);
+            console.log(deg);
             if (deg > 0) {
                 this.angle = 90 - deg;
             } else {
@@ -36,7 +36,6 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
     var attr = boss_attrs.get(boss_type);
     var items = [
 			k.sprite(attr.png, { anim: "idle" }),
-			//k.sprite("spike_1", {}),
 			k.area({ shape: new Rect(vec2(attr.vec_x, attr.vec_y), attr.rect_x, attr.rect_y) }),
 			k.scale(attr.scale),
 			k.pos(pos),

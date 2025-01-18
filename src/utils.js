@@ -18,6 +18,7 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
                 k.go(curr_scene);
             }
             else {
+                //Wenn Spieler Schlüssel hat dann darf er die Castle Szene betreten
                 k.go(next_scene, 0);
             }
         }
