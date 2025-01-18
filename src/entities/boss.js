@@ -43,6 +43,7 @@ export function generateBossComponents(k, boss_type, pos, level, player) {
 			k.state("move", ["idle", "attack", "move"]),
 			k.tile(),
 			{
+			  type: "boss",
               speed: 340,
               attackPower: 1.0,
               direction: "left",

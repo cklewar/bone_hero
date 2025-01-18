@@ -17,13 +17,15 @@ export default function enemyStateManager() {
 
     return {
       getInstance() {
-        if (!instance) {
+        /*if (!instance) {
           instance = createInstance();
-        }
-
+        }*/
+        instance = createInstance();
+        console.log("INSTANCE:", instance);
         return instance;
       },
     };
   }
 
-export const enemyState = enemyStateManager().getInstance();
+//export const enemyState = enemyStateManager().getInstance();
+export const enemyState = enemyStateManager();

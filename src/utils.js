@@ -18,7 +18,6 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
                 k.go(curr_scene);
             }
             else {
-                //Wenn Spieler Schlüssel hat dann darf er die Castle Szene betreten
                 k.go(next_scene, 0);
             }
         }
@@ -31,24 +30,24 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
 	});
 }
 
-export function watchEntityHealth(k, entity, entities) {
-    k.onUpdate(() => {
-        if (entity.entityState.getHealth() <= 0) {
-            if (entity.type === "player") {
-                //entity.setHealth(entity.getMaxHealth());
-                k.go("game_over", 0);
-            } else {
-                k.destroyAll("enemy");
-                entity.destroy();
+export function watchEntityHealth(k, entity) {
+    if (entity) {
+        entity.onUpdate(() => {
+            if (entity.entityState.getHealth() <= 0) {
+                if (entity.type === "player") {
+                    //entity.setHealth(entity.getMaxHealth());
+                    k.go("game_over", 0);
+                } else {
+                    //k.destroyAll("enemy");
+                    entity.destroy();
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 export function onCollideWith(k, entity_a, entity_a_state, entity_b) {
     entity_a.onCollide(entity_b.weapon, (entity_a) => {
-        //console.log("A:", entity_a);
-        //console.log("B:", entity_b);
         entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
         healthBar(k, entity_a);
         shake( entity_a.shake);
