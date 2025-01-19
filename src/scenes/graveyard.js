@@ -67,7 +67,7 @@ export default async function graveyard(k, levelIdx) {
 		tileHeight: 64,
 		tiles: {
 			"=": () => [
-				sprite("grass", {}),
+				sprite("deadgrass_1", {}),
 				pos(0, height() - consts.LEVEL_HEIGHT_OFFSET),
 				area(),
 				body({ isStatic: true }),
