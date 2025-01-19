@@ -2,8 +2,9 @@ import { enemyState } from "../state/enemyState.js";
 import * as consts from "../const.js";
 
 const enemy_attrs = new Map([
-    ["bat", { vec_x: 10, vec_y: 40, rect_x: 35, rect_y: 50, png: "bat_1", body: false, scale: 1, move: false, weapon: null}],
+    ["bat", { vec_x: 0, vec_y: 0, rect_x: 200, rect_y: 150, png: "bat_1", body: false, scale: 1, move: false, weapon: null}],
     ["warrior", { vec_x: 10, vec_y: -5, rect_x: 35, rect_y: 50, png: "enemy_1", body: true, scale: 3, move: true, weapon: "axe"}],
+    ["ghost", { vec_x: 0, vec_y: 40, rect_x: 120, rect_y: 100, png: "ghost_3", body: false, scale: 1, move: false, weapon: null}],
   ]);
 
 
@@ -18,18 +19,24 @@ export function generateEnemyComponents(k, type, pos, level, player) {
         k.anchor("center"),
         k.state("move", ["idle", "attack", "move"]),
         k.tile(),
-        {
-          speed: 340,
-          attackPower: 0.5,
-          direction: "left",
-          isAttacking: false,
-          weapon: attr.weapon,
-          entityState: enemyState,
-        },
-        "enemy",
     ];
 
+    var values = {
+      type: "enemy",
+      speed: 340,
+      attackPower: 0.5,
+      direction: "left",
+      isAttacking: false,
+      weapon: attr.weapon,
+      entityState: null,
+    };
+
+    items.push(values);
+    items.push("enemy");
+
+    if (!values.entityState) values.entityState = enemyState.getInstance();
     if (attr.body) items.push(k.body());
+
     const enemy = level.spawn(items, 2, 2);
 
     if (attr.move) {

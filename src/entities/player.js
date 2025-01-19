@@ -66,7 +66,7 @@ export function generatePlayerComponents(k, pos, level) {
     playAnimIfNotPlaying(player, "idle");
     player.onGround((i) => {
         if (i.is("tile_grave")) {
-            i.move(0, 1000);
+            i.move(0, 2000);
         }
     })
 

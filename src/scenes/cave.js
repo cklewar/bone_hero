@@ -10,6 +10,12 @@ import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
 
 export default async function cave(k, levelIdx) {
+    /*const entities = new Map([
+        ["player", null],
+        ["bat1", null],
+        ["bat2", null],
+    ]);*/
+
   const entities = {
     player: null,
     bat1: null,
@@ -67,6 +73,7 @@ export default async function cave(k, levelIdx) {
 	})
 
 	//Player
+
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
     watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "sunset", get_scenes());
 	healthBar(k);
@@ -74,12 +81,12 @@ export default async function cave(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
     //Enemy
-	entities.bat1 = generateEnemyComponents(k, "bat", k.vec2(width() / 2, height() - 250), level, entities.player);
-	entities.bat2 = generateEnemyComponents(k, "bat", k.vec2(width() / 5, height() - 600), level, entities.player);
-	
-    //watchEntityHealth(k, entities.enemy, entities);
+    entities.bat1 = generateEnemyComponents(k, "bat", k.vec2(width() / 2, height() - 250), level, entities.player);
+    entities.bat2 = generateEnemyComponents(k, "bat", k.vec2(width() / 5, height() - 600), level, entities.player);
+    watchEntityHealth(k, entities.bat1);
+    watchEntityHealth(k, entities.bat2);
 
     //Collide
-    onCollideWith(k, entities.player, entities.player.entityState, entities.bat1);
-	onCollideWith(k, entities.player, entities.player.entityState, entities.bat2);
+    onCollideWith(k, entities.bat1, entities.bat1.entityState, entities.player);
+    onCollideWith(k, entities.bat2, entities.bat2.entityState, entities.player);
 }
