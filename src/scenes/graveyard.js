@@ -102,5 +102,5 @@ export default async function graveyard(k, levelIdx) {
     //Collide
     onCollideWith(k, entities.ghost1, entities.ghost1.entityState, entities.player);
     onCollideWith(k, entities.ghost2, entities.ghost2.entityState, entities.player);
-    onCollideWith(k, entities.ghost3, entities.ghost2.entityState, entities.player);
+    onCollideWith(k, entities.ghost3, entities.ghost3.entityState, entities.player);
 }
