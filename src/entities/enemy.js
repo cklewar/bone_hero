@@ -4,7 +4,7 @@ import * as consts from "../const.js";
 const enemy_attrs = new Map([
     ["bat", { vec_x: 0, vec_y: 0, rect_x: 200, rect_y: 150, png: "bat_1", body: false, scale: 1, move: false, weapon: null}],
     ["warrior", { vec_x: 10, vec_y: -5, rect_x: 35, rect_y: 50, png: "enemy_1", body: true, scale: 3, move: true, weapon: "axe"}],
-    ["ghost", { vec_x: 0, vec_y: 40, rect_x: 120, rect_y: 100, png: "ghost_3", body: false, scale: 1, move: false, weapon: null}],
+    ["ghost", { vec_x: 0, vec_y: 5, rect_x: 20, rect_y: 40, png: "ghost_1", body: false, scale: 3, move: false, weapon: null}],
   ]);
 
 

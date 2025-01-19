@@ -53,7 +53,7 @@ k.loadSpriteAtlas("sprites/grave_3.png", "sprites/grave_3.json");
 k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
 k.loadSpriteAtlas("sprites/magicer.png", "sprites/magicer.json");
 k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
-k.loadSpriteAtlas("sprites/ghost_3.png", "sprites/ghost_3.json");
+k.loadSpriteAtlas("sprites/ghost_1.png", "sprites/ghost_1.json");
 k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
 
 k.setGravity(consts.GRAVITY);
