@@ -11,7 +11,8 @@ import {get_scenes} from "./scenes.js";
 export default async function graveyard(k, levelIdx) {
   const entities = {
     player: null,
-    enemy: null,
+    ghost1: null,
+    ghost2: null,
   };
 
   add([
@@ -83,17 +84,23 @@ export default async function graveyard(k, levelIdx) {
 	})
 
 	//Player
+
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "graveyard", "cave", get_scenes());
 	healthBar(k);
 	setPlayerControls(k, entities.player);
-	watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "graveyard", "cave", get_scenes());
 	watchEntityHealth(k, entities.player);
 
-	//Enemy
-	entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
-    watchEntityHealth(k, entities.enemy, entities);
+    //Enemy
+    entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 260), level, entities.player);
+    entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player);
+    entities.ghost3 = generateEnemyComponents(k, "ghost", k.vec2(width() - 750 , height() - 900), level, entities.player);
+    watchEntityHealth(k, entities.ghost1);
+    watchEntityHealth(k, entities.ghost2);
+    watchEntityHealth(k, entities.ghost3);
 
     //Collide
-    onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-    onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+    onCollideWith(k, entities.ghost1, entities.ghost1.entityState, entities.player);
+    onCollideWith(k, entities.ghost2, entities.ghost2.entityState, entities.player);
+    onCollideWith(k, entities.ghost3, entities.ghost2.entityState, entities.player);
 }

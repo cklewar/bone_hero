@@ -21,7 +21,6 @@ export default function enemyStateManager() {
           instance = createInstance();
         }*/
         instance = createInstance();
-        console.log("INSTANCE:", instance);
         return instance;
       },
     };
