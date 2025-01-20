@@ -5,19 +5,17 @@ export function generateNpcComponents(k, pos, level, player) {
     const npc = level.spawn(
         [
             k.sprite("magicer", { anim: "idle" }),
-            k.area({ shape: new k.Rect(vec2(0, 80), 35, 50)}),
+            k.area({ shape: new k.Rect(vec2(0, 30), 140, 180)}),
             k.body(),
             k.pos(pos),
             k.opacity(),
             k.scale(1),
             k.anchor("center"),
-            k.state("move", ["idle", "attack", "move"]),
+            k.state("move", ["idle", "disappear"]),
             k.tile(),
             {
               speed: 340,
               attackPower: 0.5,
-              direction: "left",
-              isAttacking: false,
               weapon: "ward",
               entityState: npcState,
             },

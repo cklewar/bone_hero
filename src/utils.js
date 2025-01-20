@@ -34,7 +34,7 @@ export async function dialog(k, pos, content) {
   ]);
 
   let index = 0;
-  displayLine(textContainer, content[index]);
+  await displayLine(textContainer, content[index]);
   let lineFinishedDisplayed = true;
   const dialogKey = k.onKeyPress("space", async () => {
     if (!lineFinishedDisplayed) return;
@@ -43,7 +43,6 @@ export async function dialog(k, pos, content) {
     if (!content[index]) {
       k.destroy(dialogBox);
       dialogKey.cancel();
-      gameState.setFreezePlayer(false);
       return;
     }
 
@@ -54,9 +53,51 @@ export async function dialog(k, pos, content) {
   });
 }
 
+function addButton(txt = "start game", p = vec2(200, 100), f = () => debug.log("hello"),) {
+    // add a parent background object
+    const btn = add([
+        rect(240, 80, { radius: 8 }),
+        pos(p),
+        area(),
+        scale(1),
+        anchor("center"),
+        outline(4),
+        color(255, 255, 255),
+    ]);
+
+    // add a child object that displays the text
+    btn.add([
+        text(txt),
+        anchor("center"),
+        color(0, 0, 0),
+    ]);
+
+    // onHoverUpdate() comes from area() component
+    // it runs every frame when the object is being hovered
+    btn.onHoverUpdate(() => {
+        const t = time() * 10;
+        btn.color = hsl2rgb((t / 10) % 1, 0.6, 0.7);
+        btn.scale = vec2(1.2);
+        setCursor("pointer");
+    });
+
+    // onHoverEnd() comes from area() component
+    // it runs once when the object stopped being hovered
+    btn.onHoverEnd(() => {
+        btn.scale = vec2(1);
+        btn.color = rgb();
+    });
+
+    // onClick() comes from area() component
+    // it runs once when the object is clicked
+    btn.onClick(f);
+
+    return btn;
+}
+
 export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene, next_scene, scenes) {
 
-    k.onUpdate(() => {
+    k.onUpdate(async () => {
 	    const spos = player.screenPos();
         if (spos.x > k.width()) {
 
@@ -68,14 +109,14 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
                 switch (curr_scene) {
                     case 'graveyard':
                         if (player.entityState.getHasKey()) {
-                            console.log(player.entityState.getHasKey());
-                            console.log("ok you got the key you can enter next screen");
                             k.go(next_scene, 0);
                             break;
                         } else {
-                            dialog(k, k.vec2(300, 300), keyLines[consts.locale]);
-                            //k.scene(curr_scene, () => scenes[curr_scene](k, levelIdx));
-                            //k.go(curr_scene);
+                            await dialog(k, k.vec2(300, 300), keyLines[consts.locale]);
+                            addButton("Ok!", vec2(650, 450), () =>  {
+                                k.scene(curr_scene, () => scenes[curr_scene](k, levelIdx));
+                                k.go(curr_scene);
+                            });
                             break;
                         }
                     default:
@@ -106,6 +147,16 @@ export function watchEntityHealth(k, entity) {
             }
         });
     }
+}
+
+export function onCollideWithNpc(k, entity_a, entity_a_state, entity_b) {
+    entity_a.onCollide(entity_b, async (entity_a) => {
+        console.log("interacting with npc");
+        await dialog(k, k.vec2(300, 300), keyLines[consts.locale]);
+        addButton("Ok!", vec2(650, 450), () =>  {
+            console.log("ready to go...");
+        });
+    });
 }
 
 export function onCollideWithObj(k, entity_a, entity_a_state, entity_b) {

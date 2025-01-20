@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateNpcComponents } from "../entities/npc.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWith, onCollideWithNpc} from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import * as consts from "../const.js";
@@ -77,6 +77,6 @@ export default async function village(k, levelIdx) {
 	entities.magician = generateNpcComponents(k, k.vec2(width() / 2, 100), level, entities.player);
 
     //Collide
-    onCollideWith(k, entities.player, entities.player.entityState, entities.magician);
+    onCollideWithNpc(k, entities.player, entities.player.entityState, "npc");
     
 }

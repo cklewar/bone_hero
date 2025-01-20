@@ -10,7 +10,7 @@
         "from": 0,
         "to": 32,
         "speed": 10,
-        "loop": true
+        "loop": false
       }
     }
   }
