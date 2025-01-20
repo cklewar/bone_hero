@@ -10,3 +10,4 @@ export const PLAYER_START_POS_Y_OFFSET = 200;
 export const ENEMY_START_POS_Y_OFFSET = 200;
 export const LEVEL_HEIGHT_OFFSET = 1000;
 export const delay = ms => new Promise(res => setTimeout(res, ms));
+export const locale = "english"

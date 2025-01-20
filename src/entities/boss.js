@@ -1,4 +1,4 @@
-import { bossState } from "../state/bossState.js";
+import { bossState } from "../state/bossGlobalState.js";
 import * as consts from "../const.js";
 
 const boss_attrs = new Map([

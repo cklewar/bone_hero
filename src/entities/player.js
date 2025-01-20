@@ -42,12 +42,8 @@ export function generatePlayerComponents(k, pos, level) {
               type: "player",
               speed: 340,
               attackPower: 1,
-              direction: "left",
-              isAttacking: false,
-              isFrozen: false,
               weapon: "sword",
               entityState: playerState,
-              shake: 1,
             },
             "player",
         ], 2, 2);
