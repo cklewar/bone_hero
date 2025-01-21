@@ -73,8 +73,7 @@ export default async function village(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
 	//Magician
-	//height() - consts.PLAYER_START_POS_Y_OFFSET)
-	entities.magician = generateNpcComponents(k, k.vec2(width() / 2, 100), level, entities.player);
+	entities.magician = generateNpcComponents(k, "magicer", k.vec2(width() / 2, 100), level, entities.player);
 
     //Collide
     onCollideWithNpc(k, entities.player, entities.player.entityState, "npc");

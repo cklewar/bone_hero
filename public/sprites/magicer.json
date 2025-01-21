@@ -8,6 +8,12 @@
     "anims": {
       "idle": {
         "from": 0,
+        "to": 0,
+        "speed": 1,
+        "loop": false
+      },
+      "disappear": {
+        "from": 0,
         "to": 32,
         "speed": 10,
         "loop": false
