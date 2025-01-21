@@ -14,7 +14,7 @@ async function displayLine(textContainer, line) {
       setTimeout(() => {
         textContainer.text += char;
         resolve();
-      }, 10)
+      }, 1)
     );
   }
 }
@@ -53,7 +53,7 @@ export async function dialog(k, pos, content) {
   });
 }
 
-function addButton(txt = "start game", p = vec2(200, 100), f = () => debug.log("hello"),) {
+function addButton(txt = "button", p = vec2(200, 100), f = () => debug.log("button added"),) {
     // add a parent background object
     const btn = add([
         rect(240, 80, { radius: 8 }),
@@ -113,10 +113,10 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
                             break;
                         } else {
                             await dialog(k, k.vec2(300, 300), keyLines[consts.locale]);
-                            addButton("Ok!", vec2(650, 450), () =>  {
+                            /*addButton("Ok!", vec2(650, 450), () =>  {
                                 k.scene(curr_scene, () => scenes[curr_scene](k, levelIdx));
                                 k.go(curr_scene);
-                            });
+                            });*/
                             break;
                         }
                     default:
@@ -151,11 +151,10 @@ export function watchEntityHealth(k, entity) {
 
 export function onCollideWithNpc(k, entity_a, entity_a_state, entity_b) {
     entity_a.onCollide(entity_b, async (entity_a) => {
-        console.log("interacting with npc");
-        await dialog(k, k.vec2(300, 300), keyLines[consts.locale]);
-        addButton("Ok!", vec2(650, 450), () =>  {
+        await dialog(k, k.vec2(300, 100), keyLines[consts.locale]);
+        /*addButton("Ok!", vec2(650, 450), () =>  {
             console.log("ready to go...");
-        });
+        });*/
     });
 }
 
