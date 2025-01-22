@@ -17,6 +17,11 @@ export default async function sky(k, levelIdx) {
     enemy: null,
   };
 
+  const music = play("OverworldlyFoe", {
+    volume: 0.8,
+    loop: true
+  });
+
   add([
 		sprite("sky",
 			{
