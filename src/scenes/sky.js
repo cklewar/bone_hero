@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import { enemyState } from "../state/enemyState.js";
@@ -120,7 +120,7 @@ export default async function sky(k, levelIdx) {
     }
 
      //Player
-    /*entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
     watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
 	healthBar(k);
 	setPlayerControls(k, entities.player);
@@ -133,8 +133,8 @@ export default async function sky(k, levelIdx) {
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
-			onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-			onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 		  	break;
 		case 1:
 			break;
@@ -144,10 +144,10 @@ export default async function sky(k, levelIdx) {
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
-			onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-			onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 		  break;
 		default:
 		  console.log(`Sorry, we are out of ${expr}.`);
-	}*/
+	}
 }

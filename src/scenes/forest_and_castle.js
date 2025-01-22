@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import * as consts from "../const.js";
@@ -112,6 +112,6 @@ export default async function forest_and_castle(k, levelIdx) {
     watchEntityHealth(k, entities.enemy, entities);
 
     //Collide
-    onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-    onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+    onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
+    onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 }

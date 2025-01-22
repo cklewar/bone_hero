@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith, onCollideWithObj, onCollideWithEnemy } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy, onCollideWithObj } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
@@ -91,41 +91,35 @@ export default async function graveyard(k, levelIdx) {
 	setPlayerControls(k, entities.player);
 	watchEntityHealth(k, entities.player);
 
-    if (levelIdx == 0) {
-        //Enemy
-        //entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 250), level, entities.player);
-        //entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player);
-        //entities.ghost3 = generateEnemyComponents(k, "ghost", k.vec2(width() - 750 , height() - 890), level, entities.player);
-        //watchEntityHealth(k, entities.ghost1);
-        //watchEntityHealth(k, entities.ghost2);
-        //watchEntityHealth(k, entities.ghost3);
+    switch (levelIdx) {
+        case 0:
+            //Enemy
+            entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 250), level, entities.player, "ghost1");
+            entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player, "ghost2");
+            entities.ghost3 = generateEnemyComponents(k, "ghost", k.vec2(width() - 750 , height() - 890), level, entities.player, "ghost3");
+            watchEntityHealth(k, entities.ghost1);
+            watchEntityHealth(k, entities.ghost2);
+            watchEntityHealth(k, entities.ghost3);
 
-        //Collide
-        //onCollideWith(k, entities.ghost1, entities.ghost1.entityState, entities.player);
-        //onCollideWith(k, entities.ghost2, entities.ghost2.entityState, entities.player);
-        //onCollideWith(k, entities.ghost3, entities.ghost3.entityState, entities.player);
-        //console.log(entities.player.onCollide);
-        //console.log(entities.ghost1.onCollide);
-        //entities.player.onCollide(entities.ghost1, (ghost));
-        /*entities.player.onCollide(entities.ghost1, ("ghost1") => {
-            console.log("with weapon");
-            //entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
-        });*/
-        //onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost1);
-    }
+            //Collide
+            onCollideWithEnemy(k, entities.ghost1, entities.ghost1.entityState, entities.player);
+            onCollideWithEnemy(k, entities.ghost2, entities.ghost2.entityState, entities.player);
+            onCollideWithEnemy(k, entities.ghost3, entities.ghost3.entityState, entities.player);
+            onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost1);
 
-    if (levelIdx == 1) {
-        //Objects
-        k.add([
-            k.sprite("key",{}),
-            k.area({ shape: new Rect(vec2(0, 0), 60, 180) }),
-            k.pos(k.vec2(width() - 1600, 200)),
-            k.opacity(),
-            k.anchor("center"),
-            "key_obj",
-        ])
+            break;
+        case 1:
+             //Objects
+            k.add([
+                k.sprite("key",{}),
+                k.area({ shape: new Rect(vec2(0, 0), 60, 180) }),
+                k.pos(k.vec2(width() - 1600, 200)),
+                k.opacity(),
+                k.anchor("center"),
+                "key_obj",
+            ])
 
-        //Collide
-        onCollideWithObj(k, entities.player, entities.player.entityState, "key_obj");
+            //Collide
+            onCollideWithObj(k, entities.player, entities.player.entityState, "key_obj");
     }
 }
