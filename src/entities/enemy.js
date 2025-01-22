@@ -8,7 +8,7 @@ const enemy_attrs = new Map([
 ]);
 
 
-export function generateEnemyComponents(k, type, pos, level, player) {
+export function generateEnemyComponents(k, type, pos, level, player, tag) {
     var attr = enemy_attrs.get(type);
     var items = [
         k.sprite(attr.png, { anim: "idle" }),
@@ -33,6 +33,7 @@ export function generateEnemyComponents(k, type, pos, level, player) {
 
     items.push(values);
     items.push("enemy");
+    items.push(tag);
 
     if (!values.entityState) values.entityState = enemyState.getInstance();
     if (attr.body) items.push(k.body());

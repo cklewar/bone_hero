@@ -56,7 +56,10 @@ k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
 k.loadSpriteAtlas("sprites/ghost_1.png", "sprites/ghost_1.json");
 k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
 
+
+k.loadSound("move_grass", "sounds/rpg_essentials/12_Player_Movement_SFX/03_Step_grass_03.wav");
+
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("village",{levelIdx: 0});
+k.go("graveyard",{levelIdx: 0});

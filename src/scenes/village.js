@@ -77,5 +77,6 @@ export default async function village(k, levelIdx) {
 
     //Collide
     onCollideWithNpc(k, entities.player, entities.player.entityState, "npc");
+})
     
 }

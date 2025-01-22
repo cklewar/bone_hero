@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith, onCollideWithObj } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWith, onCollideWithObj, onCollideWithEnemy } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
@@ -101,9 +101,17 @@ export default async function graveyard(k, levelIdx) {
         watchEntityHealth(k, entities.ghost3);
 
         //Collide
-        onCollideWith(k, entities.ghost1, entities.ghost1.entityState, entities.player);
-        onCollideWith(k, entities.ghost2, entities.ghost2.entityState, entities.player);
-        onCollideWith(k, entities.ghost3, entities.ghost3.entityState, entities.player);
+        //onCollideWith(k, entities.ghost1, entities.ghost1.entityState, entities.player);
+        //onCollideWith(k, entities.ghost2, entities.ghost2.entityState, entities.player);
+        //onCollideWith(k, entities.ghost3, entities.ghost3.entityState, entities.player);
+        console.log(entities.player.onCollide);
+        console.log(entities.ghost1.onCollide);
+        //entities.player.onCollide(entities.ghost1, (ghost));
+        entities.player.onCollide(entities.ghost1, ("ghost1") => {
+            console.log("with weapon");
+            //entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
+        });
+        //onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost1);
     }
 
     if (levelIdx == 1) {
@@ -111,7 +119,6 @@ export default async function graveyard(k, levelIdx) {
         k.add([
             k.sprite("key",{}),
             k.area({ shape: new Rect(vec2(0, 0), 60, 180) }),
-            //k.pos(k.vec2(width() - 200, 240)),
             k.pos(k.vec2(width() - 1600, 200)),
             k.opacity(),
             k.anchor("center"),

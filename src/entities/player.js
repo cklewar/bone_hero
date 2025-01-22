@@ -96,6 +96,7 @@ export function setPlayerControls(k, player) {
         if (["space"].includes(key)) {
             if (player.isGrounded()) {
 		        player.jump(consts.JUMP_FORCE);
+		        play("move_grass")
 	        }
             return;
         }
