@@ -65,31 +65,31 @@ export default async function sky(k, levelIdx) {
 			"                               ",
 		    "                               ",
 			"                               ",
-			"                               ",
 			"                          :    ",
-			"               :::::::    :    ",
+			"                          :    ",
+			"           :    :::::::   :    ",
 			"                          :    ",
 			"     :::::                :    ",
 			"                          :    ",
-			"            :::::         :    ",
+			"                          :    ",
 			"                          :    ",
 			"                          :    ",
 			"                          :    ",
 			"===============================",
 		],
 		[
-		    "                               ",
+		    "                    t           ",
 			"                               ",
 			"                               ",
 		    "                               ",
 			"                               ",
+			"           :   ::::   :::::    ",
+			"         :                     ",
+			"        :                      ",
+			"       :                       ",
+			"        :                      ",
+			"         :                     ",
 			"                               ",
-			"                               ",
-			"                  ::      :    ",
-			"                               ",
-			"            :::::::            ",
-			"                               ",
-			"    ::::                       ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -135,11 +135,28 @@ export default async function sky(k, levelIdx) {
 	setPlayerControls(k, entities.player);
 	watchEntityHealth(k, entities.player);
 
-    //Enemy
-	entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
-    watchEntityHealth(k, entities.enemy, entities);
+	switch (levelIdx) {
+		case 0:
+			//Enemy
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 600, height() - 900), level, entities.player);
+			watchEntityHealth(k, entities.enemy, entities);
 
-    //Collide
-    onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-    onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+			//Collide
+			onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+		  	break;
+		case 1:
+			break;
+		case 2:
+		  	//Enemy
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+			watchEntityHealth(k, entities.enemy, entities);
+
+			//Collide
+			onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+		  break;
+		default:
+		  console.log(`Sorry, we are out of ${expr}.`);
+	  }
 }
