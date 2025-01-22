@@ -17,10 +17,10 @@ export default async function sky(k, levelIdx) {
     enemy: null,
   };
 
-  const music = play("OverworldlyFoe", {
+  /*const music = play("OverworldlyFoe", {
     volume: 0.8,
     loop: true
-  });
+  });*/
 
   add([
 		sprite("sky",
@@ -28,22 +28,8 @@ export default async function sky(k, levelIdx) {
 				width: width(),
 				height: height(),
 			})
-	])
+	]);
 
-   /*
-
-	// character dialog data
-	const characters = {
-		"a": {
-			sprite: "bag",
-			msg: "Hi Warrior! You should get that key!",
-		},
-		"b": {
-			sprite: "ghosty",
-			msg: "Who are you? You can see me??",
-		},
-	}
-    */
 	// level layouts
 	const levels = [
 		[
@@ -134,7 +120,7 @@ export default async function sky(k, levelIdx) {
     }
 
      //Player
-    entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    /*entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
     watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
 	healthBar(k);
 	setPlayerControls(k, entities.player);
@@ -163,5 +149,5 @@ export default async function sky(k, levelIdx) {
 		  break;
 		default:
 		  console.log(`Sorry, we are out of ${expr}.`);
-	  }
+	}*/
 }
