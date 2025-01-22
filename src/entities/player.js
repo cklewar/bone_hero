@@ -103,6 +103,7 @@ export function setPlayerControls(k, player) {
 
         if (["f"].includes(key)) {
             const weapon = player.get(player.weapon);
+            play("player_weapon_attack")
             weapon[0].spin();
             return;
         }

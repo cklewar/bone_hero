@@ -18,6 +18,11 @@ export default async function castle(k, levelIdx) {
         enemy: null,
     };
 
+    const music = play("scene_background_castle", {
+        volume: 0.8,
+        loop: true
+    });
+
     add([
         sprite("castle_1",
             {
@@ -82,7 +87,7 @@ export default async function castle(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
 	//Boss
-    /*entities.boss1 = generateBossComponents(k, "boss_1", k.vec2(width() / 2, height() - 420), level, entities.player);
+    entities.boss1 = generateBossComponents(k, "boss_1", k.vec2(width() / 2, height() - 420), level, entities.player);
     await wait(2);
 
 	for (let i = 0; i < 45; i++) {
@@ -92,7 +97,6 @@ export default async function castle(k, levelIdx) {
     }
 
     entities.boss1.destroy();
-    */
     entities.boss2 = generateBossComponents(k, "boss_2", k.vec2(width() / 2, height() / 100), level, entities.player);
 
 	//Enemy
