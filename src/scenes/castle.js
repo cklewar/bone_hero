@@ -110,18 +110,9 @@ export default async function castle(k, levelIdx) {
 
     entities.boss1.destroy();
     entities.boss2 = generateBossComponents(k, "boss_2", k.vec2(width() / 2, height() / 100), level, entities.player);
-
-	//Enemy
-	//entities.enemy = generateEnemyComponents(k, k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
-    //watchEntityHealth(k, entities.enemy, entities);
+    watchEntityHealth(k, entities.boss2, entities);
 
     //Collide
-    //onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
-    //onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
-
-
-
-
-
-
+    onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.boss2);
+    onCollideWithEnemy(k, entities.boss2, entities.enemy.entityState, entities.player);
 }
