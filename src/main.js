@@ -62,6 +62,5 @@ k.loadMusic("scene_background_sky", "sounds/02_Zayon_Village.mp3");
 k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
 
 k.setGravity(consts.GRAVITY);
-
 init_scenes(k);
 k.go("intro",{levelIdx: 0});

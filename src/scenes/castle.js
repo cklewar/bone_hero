@@ -7,6 +7,7 @@ import { generateBossComponents } from "../entities/boss.js";
 import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy, addFlamebar} from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
+import { musicState } from "../state/musicGlobalState.js";
 import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
 
@@ -17,6 +18,17 @@ export default async function castle(k, levelIdx) {
         player: null,
         enemy: null,
     };
+
+    if (!musicState.getObj()) {
+        musicState.setTitle("scene_background_sky");
+        musicState.play();
+        musicState.setPaused(false);
+    } else {
+        musicState.stop();
+        musicState.setTitle("scene_background_castle");
+        musicState.play();
+        musicState.setPaused(false);
+    }
 
     const music = play("scene_background_castle", {
         volume: 0.8,
