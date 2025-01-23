@@ -18,6 +18,9 @@ export default function playerGlobalStateManager() {
         getIsSwordEquipped: () => isSwordEquipped,
         getMaxHealth: () => maxHealth,
         setHealth(value) {
+          if (value < this.getHealth()) {
+            play("player_live_loss");
+          }
           health = value;
         },
         getHealth: () => health,

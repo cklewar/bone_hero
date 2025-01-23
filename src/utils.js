@@ -65,15 +65,12 @@ function addButton(txt = "button", p = vec2(200, 100), f = () => debug.log("butt
         color(255, 255, 255),
     ]);
 
-    // add a child object that displays the text
     btn.add([
         text(txt),
         anchor("center"),
         color(0, 0, 0),
     ]);
 
-    // onHoverUpdate() comes from area() component
-    // it runs every frame when the object is being hovered
     btn.onHoverUpdate(() => {
         const t = time() * 10;
         btn.color = hsl2rgb((t / 10) % 1, 0.6, 0.7);
@@ -81,15 +78,11 @@ function addButton(txt = "button", p = vec2(200, 100), f = () => debug.log("butt
         setCursor("pointer");
     });
 
-    // onHoverEnd() comes from area() component
-    // it runs once when the object stopped being hovered
     btn.onHoverEnd(() => {
         btn.scale = vec2(1);
         btn.color = rgb();
     });
 
-    // onClick() comes from area() component
-    // it runs once when the object is clicked
     btn.onClick(f);
 
     return btn;
@@ -142,6 +135,7 @@ export function watchEntityHealth(k, entity) {
                     k.go("game_over", 0);
                 } else {
                     //k.destroyAll("enemy");
+                    play("enemy_death");
                     entity.destroy();
                 }
             }

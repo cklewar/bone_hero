@@ -13,7 +13,7 @@ export default function musicStateManager() {
         play() {
             obj = play(this.getTitle(), {
                 paused: true,
-                volume: 0.8,
+                volume: 0.0,
                 loop: true
             });
         },

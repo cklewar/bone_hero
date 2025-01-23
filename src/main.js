@@ -57,7 +57,11 @@ k.loadSpriteAtlas("sprites/ghost_1.png", "sprites/ghost_1.json");
 k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
 
 k.loadSound("move_grass", "sounds/rpg_essentials/12_Player_Movement_SFX/03_Step_grass_03.wav");
-k.loadSound("player_weapon_attack", "sounds/rpg_essentials/10_Battle_SFX/77_flesh_02.wav");
+k.loadSound("player_weapon_attack", "sounds/rpg_essentials/12_Player_Movement_SFX//56_Attack_03.wav");
+k.loadSound("enemy_death", "sounds/rpg_essentials/10_Battle_SFX/69_Enemy_death_01.wav");
+k.loadSound("player_live_loss", "sounds/rpg_essentials/10_Battle_SFX/77_flesh_02.wav");
+
+
 k.loadMusic("scene_background_sky", "sounds/02_Zayon_Village.mp3");
 k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
 

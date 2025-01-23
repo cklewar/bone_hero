@@ -81,8 +81,8 @@ export default async function cave(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
     //Enemy
-    entities.bat1 = generateEnemyComponents(k, "bat", k.vec2(width() / 2, height() - 250), level, entities.player);
-    entities.bat2 = generateEnemyComponents(k, "bat", k.vec2(width() / 5, height() - 600), level, entities.player);
+    entities.bat1 = generateEnemyComponents(k, "bat", k.vec2(width() / 2, height() - 250), level, entities.player, "bat1");
+    entities.bat2 = generateEnemyComponents(k, "bat", k.vec2(width() / 5, height() - 600), level, entities.player, "bat2");
     watchEntityHealth(k, entities.bat1);
     watchEntityHealth(k, entities.bat2);
 
