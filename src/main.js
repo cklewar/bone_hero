@@ -62,4 +62,4 @@ k.loadSound("move_grass", "sounds/rpg_essentials/12_Player_Movement_SFX/03_Step_
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("graveyard",{levelIdx: 0});
+k.go("sky",{levelIdx: 0});

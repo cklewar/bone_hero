@@ -92,7 +92,7 @@ export default async function graveyard(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
     if (levelIdx == 0) {
-        //Enemy
+        Enemy
         //entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 250), level, entities.player);
         //entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player);
         //entities.ghost3 = generateEnemyComponents(k, "ghost", k.vec2(width() - 750 , height() - 890), level, entities.player);

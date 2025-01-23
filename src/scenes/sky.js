@@ -39,8 +39,8 @@ export default async function sky(k, levelIdx) {
 			"                               ",
 			"                               ",
 			"                               ",
-			"                               ",
-			"       :::::             ::::  ",
+			"     ::::::                    ",
+			"                         ::::  ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -120,7 +120,7 @@ export default async function sky(k, levelIdx) {
     }
 
      //Player
-    /*entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
+    entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
     watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
 	healthBar(k);
 	setPlayerControls(k, entities.player);
@@ -129,7 +129,7 @@ export default async function sky(k, levelIdx) {
 	switch (levelIdx) {
 		case 0:
 			//Enemy
-			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 600, height() - 900), level, entities.player);
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 200, height() - 400), level, entities.player, "warrior1");
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
@@ -140,7 +140,7 @@ export default async function sky(k, levelIdx) {
 			break;
 		case 2:
 		  	//Enemy
-			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player);
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() / 200, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player, "warrior1");
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
@@ -149,5 +149,5 @@ export default async function sky(k, levelIdx) {
 		  break;
 		default:
 		  console.log(`Sorry, we are out of ${expr}.`);
-	}*/
+	}
 }
