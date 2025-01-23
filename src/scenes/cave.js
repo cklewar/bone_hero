@@ -10,11 +10,6 @@ import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
 
 export default async function cave(k, levelIdx) {
-    /*const entities = new Map([
-        ["player", null],
-        ["bat1", null],
-        ["bat2", null],
-    ]);*/
 
   const entities = {
     player: null,
@@ -73,7 +68,6 @@ export default async function cave(k, levelIdx) {
 	})
 
 	//Player
-
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
     watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "cave", "sunset", get_scenes());
 	healthBar(k);
