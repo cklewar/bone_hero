@@ -48,7 +48,7 @@ k.loadSprite("teppich_1", "sprites/teppich.png");
 k.loadSprite("king_1", "sprites/king.png");
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
-k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
+ k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
 k.loadSpriteAtlas("sprites/grave_3.png", "sprites/grave_3.json");
 k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
 k.loadSpriteAtlas("sprites/magicer.png", "sprites/magicer.json");
@@ -56,10 +56,12 @@ k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
 k.loadSpriteAtlas("sprites/ghost_1.png", "sprites/ghost_1.json");
 k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
 
-
 k.loadSound("move_grass", "sounds/rpg_essentials/12_Player_Movement_SFX/03_Step_grass_03.wav");
+k.loadSound("player_weapon_attack", "sounds/rpg_essentials/10_Battle_SFX/77_flesh_02.wav");
+k.loadMusic("scene_background_sky", "sounds/02_Zayon_Village.mp3");
+k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
 
 k.setGravity(consts.GRAVITY);
 
 init_scenes(k);
-k.go("sky",{levelIdx: 0});
+k.go("intro",{levelIdx: 0});

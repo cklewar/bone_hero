@@ -167,60 +167,20 @@ export function onCollideWithObj(k, entity_a, entity_a_state, entity_b) {
     });
 }
 
-export function onCollideWith(k, entity_a, entity_a_state, entity_b) {
+export function onCollideWithEnemy(k, entity_a, entity_a_state, entity_b) {
     if (entity_b.weapon) {
-        entity_a.onCollide(entity_b.weapon, (entity_a) => {
-            console.log("with weapon");
+        entity_a.onCollide(entity_b.weapon, (entity) => {
             entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
             healthBar(k, entity_a);
             shake( entity_a.shake);
         });
     } else {
-        entity_a.onCollide(entity_b, (entity_a) => {
-            console.log("without weapon");
-            console.log(entity_a_state.getHealth());
-            console.log(entity_b.attackPower);
-            console.log(entity_b.type);
-            var e = k.get("ghost1");
-            console.log(e);
-            console.log(entity_a_state.getHealth() - entity_b.attackPower);
+        entity_a.onCollide(entity_b.tags[2], (entity_b) => {
             entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
             healthBar(k, entity_a);
             shake( entity_a.shake);
         });
     }
-}
-
-export function onCollideWithEnemy(k, entity_a, entity_a_state, entity_b) {
-    console.log(entity_a);
-    console.log(entity_b);
-    entity_b.onCollide(entity_a.weapon, (entity_a) => {
-            console.log("with weapon");
-            entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
-            healthBar(k, entity_a);
-            shake( entity_a.shake);
-        });
-    /*if (entity_b.weapon) {
-        entity_a.onCollide(entity_b.weapon, (entity_a) => {
-            console.log("with weapon");
-            entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
-            healthBar(k, entity_a);
-            shake( entity_a.shake);
-        });
-    } else {
-        entity_a.onCollide(entity_b, (entity_a) => {
-            console.log("without weapon");
-            console.log(entity_a_state.getHealth());
-            console.log(entity_b.attackPower);
-            console.log(entity_b.type);
-            var e = k.get("ghost1");
-            console.log(e);
-            console.log(entity_a_state.getHealth() - entity_b.attackPower);
-            entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
-            healthBar(k, entity_a);
-            shake( entity_a.shake);
-        });
-    }*/
 }
 
 export function addFlamebar(position = vec2(0), angle = 0, num = 6) {

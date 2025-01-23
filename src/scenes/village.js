@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateNpcComponents } from "../entities/npc.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith, onCollideWithNpc} from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy, onCollideWithNpc} from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import * as consts from "../const.js";

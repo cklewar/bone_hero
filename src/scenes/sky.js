@@ -3,7 +3,7 @@ import {
   setPlayerControls,
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWith } from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import { enemyState } from "../state/enemyState.js";
@@ -12,17 +12,17 @@ import {get_scenes} from "./scenes.js";
 
 export default async function sky(k, levelIdx) {
 
-  const entities = {
-    player: null,
-    enemy: null,
-  };
+    const entities = {
+        player: null,
+        enemy: null,
+    };
 
-  /*const music = play("OverworldlyFoe", {
-    volume: 0.8,
-    loop: true
-  });*/
+    const music = play("scene_background_sky", {
+        volume: 0.8,
+        loop: true
+    });
 
-  add([
+    add([
 		sprite("sky",
 			{
 				width: width(),
@@ -129,12 +129,12 @@ export default async function sky(k, levelIdx) {
 	switch (levelIdx) {
 		case 0:
 			//Enemy
-			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 200, height() - 400), level, entities.player, "warrior1");
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 600, height() - 900), level, entities.player, "warrior1");
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
-			onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-			onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 		  	break;
 		case 1:
 			break;
@@ -144,8 +144,8 @@ export default async function sky(k, levelIdx) {
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
-			onCollideWith(k, entities.player, entities.player.entityState, entities.enemy);
-			onCollideWith(k, entities.enemy, entities.enemy.entityState, entities.player);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 		  break;
 		default:
 		  console.log(`Sorry, we are out of ${expr}.`);
