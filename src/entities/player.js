@@ -28,28 +28,32 @@ function jump(p) {
 }
 
 export function generatePlayerComponents(k, pos, level) {
-    const player = level.spawn(
-        [
-            k.sprite("hero_2", { anim: "idle" }),
-            k.area({ shape: new k.Rect(vec2(-15, -5), 20, 50)}),
-            k.body(),
-            k.pos(pos),
-            k.opacity(),
-            k.scale(3),
-            k.anchor("center"),
-            k.tile(),
-            {
-              type: "player",
-              speed: 340,
-              attackPower: 1,
-              weapon: "sword",
-              entityState: playerState,
-            },
-            "player",
-        ], 2, 2);
 
+    var items = [
+       k.sprite("bone_hero", { anim: "idle" }),
+        k.area({ shape: new k.Rect(vec2(-15, -2), 20, 50)}),
+        k.body(),
+        k.pos(pos),
+        k.opacity(),
+        k.scale(3),
+        k.anchor("center"),
+        k.tile(),
+    ];
+
+    var values = {
+        type: "player",
+        speed: 340,
+        attackPower: 1,
+        weapon: "sword",
+        entityState: playerState,
+    };
+
+    items.push(values);
+    items.push("player");
+
+    const player = level.spawn(items, 2, 2);
     const weapon = player.add([
-        k.pos(-20, 10),
+        k.pos(-16, 14),
         k.area({ shape: new Rect(vec2(0, 5), 20, 60) }),
         k.sprite("sword"),
         k.anchor("bot"),
@@ -78,16 +82,24 @@ export function setPlayerControls(k, player) {
 
 	k.onKeyDown((key) => {
 	     if (["left"].includes(key)) {
-	      playAnimIfNotPlaying(player, "run");
+	      playAnimIfNotPlaying(player, "run_left");
           player.move(-player.speed, 0);
           player.direction = "left";
+          let weapon = player.get("sword")[0];
+          console.log(weapon);
+          console.log(weapon.pos);
+          weapon.rotateTo(270);
           return;
         }
 
         if (["right"].includes(key)) {
-          playAnimIfNotPlaying(player, "run");
+          playAnimIfNotPlaying(player, "run_right");
           player.move(player.speed, 0);
           player.direction = "right";
+          let weapon = player.get("sword")[0];
+          console.log(weapon);
+          console.log(weapon.pos);
+          weapon.rotateTo(60);
           return;
         }
 	});
