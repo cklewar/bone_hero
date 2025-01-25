@@ -144,11 +144,16 @@ export function watchEntityHealth(k, entity) {
 }
 
 export function onCollideWithNpc(k, entity_a, entity_a_state, entity_b) {
-    entity_a.onCollide(entity_b, async (entity_a) => {
-        await dialog(k, k.vec2(300, 100), keyLines[consts.locale]);
-        /*addButton("Ok!", vec2(650, 450), () =>  {
-            console.log("ready to go...");
-        });*/
+    entity_a.onCollide(entity_b, async (entity_b) => {
+        switch (entity_b.type) {
+            case "magicer":
+                await dialog(k, k.vec2(300, 100), keyLines[consts.locale]);
+                entity_b.enterState("disappear");
+
+                break;
+            default:
+                console.log("unknown npc type");
+        }
     });
 }
 

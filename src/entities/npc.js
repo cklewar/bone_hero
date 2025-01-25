@@ -16,9 +16,10 @@ export function generateNpcComponents(k, type, pos, level, player) {
             k.opacity(),
             k.scale(1),
             k.anchor("center"),
-            k.state("move", ["idle", "disappear"]),
+            k.state("idle", ["idle", "disappear"]),
             k.tile(),
             {
+              type: type,
               speed: 340,
               attackPower: 0.5,
               weapon: "ward",
@@ -27,22 +28,11 @@ export function generateNpcComponents(k, type, pos, level, player) {
             "npc",
         ], 2, 2);
 
-    /*enemy.onStateEnter("idle", async () => {
-        await wait(0.5);
-        //enemy.enterState("move");
+    npc.onStateEnter("disappear", async () => {
+        npc.play("disappear");
+        await wait(1.5);
+        npc.destroy();
     });
-
-	enemy.onStateEnter("move", async () => {
-		await wait(2);
-		enemy.enterState("idle");
-	});
-
-	enemy.onStateUpdate("move", () => {
-		// We move the boss in the direction of the player
-		if (!player.exists()) return;
-		const dir = player.pos.sub(enemy.pos).unit();
-		enemy.move(dir.scale(consts.ENEMY_SPEED));
-	});*/
 
   return npc;
 }
