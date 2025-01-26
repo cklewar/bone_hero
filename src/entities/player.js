@@ -4,20 +4,32 @@ import * as consts from "../const.js"
 
 function spin() {
     let spinning = false;
+
     return {
         id: "spin",
         update() {
             if (spinning) {
-                this.angle += 1200 * dt();
-                if (this.angle >= 360) {
-                    this.angle = 60;
-                    spinning = false;
+                if (this.parent.direction == "right") {
+                    this.angle += 1200 * dt();
+
+                    if (this.angle >= 360) {
+                        this.angle = 60;
+                        spinning = false;
+                    }
+                } else if (this.parent.direction == "left") {
+                    this.angle += 1200 * dt();
+
+                    if (this.angle >= 600) {
+                        spinning = false;
+                        this.angle = 300;
+                    }
                 }
             }
         },
         spin() {
             spinning = true;
         },
+        isSpinning: () => spinning,
     };
 }
 
@@ -46,6 +58,7 @@ export function generatePlayerComponents(k, pos, level) {
         attackPower: 1,
         weapon: "sword",
         entityState: playerState,
+        direction: "right"
     };
 
     items.push(values);
@@ -77,6 +90,17 @@ export function setPlayerControls(k, player) {
     k.onKeyRelease((key) => {
 			if (!isKeyDown("left") && !isKeyDown("right")) {
 				playAnimIfNotPlaying(player, "idle");
+				player.direction == "right"
+				let weapon = player.get("sword")[0];
+
+				if (weapon.isSpinning()){
+                } else {
+				    weapon.pos.x = -16;
+                    weapon.angle = 60;
+                }
+
+			} else {
+
 			}
     });
 
@@ -86,9 +110,14 @@ export function setPlayerControls(k, player) {
           player.move(-player.speed, 0);
           player.direction = "left";
           let weapon = player.get("sword")[0];
-          console.log(weapon);
-          console.log(weapon.pos);
-          weapon.rotateTo(270);
+
+          if (weapon.isSpinning()){
+
+          } else {
+            weapon.angle = 300;
+            weapon.pos.x = 8;
+          }
+
           return;
         }
 
@@ -97,9 +126,14 @@ export function setPlayerControls(k, player) {
           player.move(player.speed, 0);
           player.direction = "right";
           let weapon = player.get("sword")[0];
-          console.log(weapon);
-          console.log(weapon.pos);
-          weapon.rotateTo(60);
+
+          if (weapon.isSpinning()){
+
+          } else {
+            weapon.pos.x = -16;
+            weapon.angle = 60;
+          }
+
           return;
         }
 	});
