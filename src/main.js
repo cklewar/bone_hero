@@ -48,7 +48,8 @@ k.loadSprite("teppich_1", "sprites/teppich.png");
 k.loadSprite("king_1", "sprites/king.png");
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
- k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
+k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");
+k.loadSpriteAtlas("sprites/bone_hero.png", "sprites/bone_hero.json");
 k.loadSpriteAtlas("sprites/grave_3.png", "sprites/grave_3.json");
 k.loadSpriteAtlas("sprites/bone_2.png", "sprites/bone_2.json");
 k.loadSpriteAtlas("sprites/magicer.png", "sprites/magicer.json");
@@ -67,4 +68,4 @@ k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("intro",{levelIdx: 0});
+k.go("sky",{levelIdx: 0});

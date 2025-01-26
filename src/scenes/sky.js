@@ -111,7 +111,7 @@ export default async function sky(k, levelIdx) {
 	})
 
     //Bone Animation
-    if (levelIdx === 0) {
+    /*if (levelIdx === 0) {
         const bone = add([
             sprite("bone_2", { anim: "idle" }),
             pos(10, height() - 190),
@@ -119,7 +119,7 @@ export default async function sky(k, levelIdx) {
 	    ])
 	    await consts.delay(2400);
         k.destroy(bone);
-    }
+    }*/
 
      //Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
@@ -128,7 +128,7 @@ export default async function sky(k, levelIdx) {
 	setPlayerControls(k, entities.player);
 	watchEntityHealth(k, entities.player);
 
-	switch (levelIdx) {
+	/*switch (levelIdx) {
 		case 0:
 			//Enemy
 			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 600, height() - 900), level, entities.player, "warrior1");
@@ -151,5 +151,5 @@ export default async function sky(k, levelIdx) {
 		  break;
 		default:
 		  console.log(`Sorry, we are out of ${expr}.`);
-	}
+	}*/
 }

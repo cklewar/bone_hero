@@ -4,20 +4,32 @@ import * as consts from "../const.js"
 
 function spin() {
     let spinning = false;
+
     return {
         id: "spin",
         update() {
             if (spinning) {
-                this.angle += 1200 * dt();
-                if (this.angle >= 360) {
-                    this.angle = 60;
-                    spinning = false;
+                if (this.parent.direction == "right") {
+                    this.angle += 1200 * dt();
+
+                    if (this.angle >= 360) {
+                        this.angle = 60;
+                        spinning = false;
+                    }
+                } else if (this.parent.direction == "left") {
+                    this.angle += 1200 * dt();
+
+                    if (this.angle >= 600) {
+                        spinning = false;
+                        this.angle = 300;
+                    }
                 }
             }
         },
         spin() {
             spinning = true;
         },
+        isSpinning: () => spinning,
     };
 }
 
@@ -28,28 +40,33 @@ function jump(p) {
 }
 
 export function generatePlayerComponents(k, pos, level) {
-    const player = level.spawn(
-        [
-            k.sprite("hero_2", { anim: "idle" }),
-            k.area({ shape: new k.Rect(vec2(-15, -5), 20, 50)}),
-            k.body(),
-            k.pos(pos),
-            k.opacity(),
-            k.scale(3),
-            k.anchor("center"),
-            k.tile(),
-            {
-              type: "player",
-              speed: 340,
-              attackPower: 1,
-              weapon: "sword",
-              entityState: playerState,
-            },
-            "player",
-        ], 2, 2);
 
+    var items = [
+       k.sprite("bone_hero", { anim: "idle" }),
+        k.area({ shape: new k.Rect(vec2(-15, -2), 20, 50)}),
+        k.body(),
+        k.pos(pos),
+        k.opacity(),
+        k.scale(3),
+        k.anchor("center"),
+        k.tile(),
+    ];
+
+    var values = {
+        type: "player",
+        speed: 340,
+        attackPower: 1,
+        weapon: "sword",
+        entityState: playerState,
+        direction: "right"
+    };
+
+    items.push(values);
+    items.push("player");
+
+    const player = level.spawn(items, 2, 2);
     const weapon = player.add([
-        k.pos(-20, 10),
+        k.pos(-16, 14),
         k.area({ shape: new Rect(vec2(0, 5), 20, 60) }),
         k.sprite("sword"),
         k.anchor("bot"),
@@ -73,21 +90,50 @@ export function setPlayerControls(k, player) {
     k.onKeyRelease((key) => {
 			if (!isKeyDown("left") && !isKeyDown("right")) {
 				playAnimIfNotPlaying(player, "idle");
+				player.direction == "right"
+				let weapon = player.get("sword")[0];
+
+				if (weapon.isSpinning()){
+                } else {
+				    weapon.pos.x = -16;
+                    weapon.angle = 60;
+                }
+
+			} else {
+
 			}
     });
 
 	k.onKeyDown((key) => {
 	     if (["left"].includes(key)) {
-	      playAnimIfNotPlaying(player, "run");
+	      playAnimIfNotPlaying(player, "run_left");
           player.move(-player.speed, 0);
           player.direction = "left";
+          let weapon = player.get("sword")[0];
+
+          if (weapon.isSpinning()){
+
+          } else {
+            weapon.angle = 300;
+            weapon.pos.x = 8;
+          }
+
           return;
         }
 
         if (["right"].includes(key)) {
-          playAnimIfNotPlaying(player, "run");
+          playAnimIfNotPlaying(player, "run_right");
           player.move(player.speed, 0);
           player.direction = "right";
+          let weapon = player.get("sword")[0];
+
+          if (weapon.isSpinning()){
+
+          } else {
+            weapon.pos.x = -16;
+            weapon.angle = 60;
+          }
+
           return;
         }
 	});
