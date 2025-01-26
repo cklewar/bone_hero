@@ -71,6 +71,6 @@ export default async function intro(k) {
 	]);
 
 	k.onKeyDown("enter", () => {
-	    k.go("village", 0);
+	    k.go("sky", 0);
 	})
 }
