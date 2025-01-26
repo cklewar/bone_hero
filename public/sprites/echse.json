@@ -1,0 +1,18 @@
+{
+  "echse": {
+    "x": 0,
+    "y": 0,
+    "width": 384,
+    "height": 128,
+    "sliceX": 3,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 2,
+        "speed": 2,
+        "loop": true
+      },
+      "hit": 8
+    }
+  }
+}

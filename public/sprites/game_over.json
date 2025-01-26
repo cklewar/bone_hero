@@ -1,0 +1,17 @@
+{
+  "game_over": {
+    "x": 0,
+    "y": 0,
+    "width": 2048,
+    "height": 2050,
+    "sliceX": 15,
+    "anims": {
+      "idle": {
+        "from": 0,
+        "to": 14,
+        "speed": 5,
+        "loop": false
+      }
+    }
+  }
+}

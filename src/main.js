@@ -56,6 +56,8 @@ k.loadSpriteAtlas("sprites/magicer.png", "sprites/magicer.json");
 k.loadSpriteAtlas("sprites/daemon_6.png", "sprites/daemon_6.json");
 k.loadSpriteAtlas("sprites/ghost_1.png", "sprites/ghost_1.json");
 k.loadSpriteAtlas("sprites/bat_1.png", "sprites/bat_1.json");
+k.loadSpriteAtlas("sprites/game_over.png", "sprites/game_over.json");
+k.loadSpriteAtlas("sprites/echse.png", "sprites/echse.json");
 
 k.loadSound("move_grass", "sounds/rpg_essentials/12_Player_Movement_SFX/03_Step_grass_03.wav");
 k.loadSound("player_weapon_attack", "sounds/rpg_essentials/12_Player_Movement_SFX//56_Attack_03.wav");
@@ -68,4 +70,4 @@ k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("sky",{levelIdx: 0});
+k.go("intro", {levelIdx: 0});
