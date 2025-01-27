@@ -112,7 +112,7 @@ export default async function forest_and_castle(k, levelIdx) {
 
     switch (levelIdx) {
 		case 0:
-			 //Enemy
+			//Enemy
             entities.echse1 = generateEnemyComponents(k, "echse", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player, "echse1");
             entities.echse2 = generateEnemyComponents(k, "echse", k.vec2(width() / 2 - 100 , height() - 525), level, entities.player, "echse2");
             entities.echse3 = generateEnemyComponents(k, "echse", k.vec2(width() / 2 - 500, height() - 460), level, entities.player, "echse3");

@@ -106,10 +106,6 @@ export function watchPlayerOffScreen(k, player, levelIdx, lvl_length, curr_scene
                             break;
                         } else {
                             await dialog(k, k.vec2(300, 300), keyLines[consts.locale]);
-                            /*addButton("Ok!", vec2(650, 450), () =>  {
-                                k.scene(curr_scene, () => scenes[curr_scene](k, levelIdx));
-                                k.go(curr_scene);
-                            });*/
                             break;
                         }
                     default:
@@ -131,10 +127,21 @@ export function watchEntityHealth(k, entity) {
         entity.onUpdate(() => {
             if (entity.entityState.getHealth() <= 0) {
                 if (entity.type === "player") {
-                    //entity.setHealth(entity.getMaxHealth());
                     k.go("game_over", 0);
+                } else if (entity.type === "boss") {
+                    entity.destroy();
+                    k.destroyAll("flame_bar");
+                    let diamond = k.add([
+                        k.sprite("diamond_1",{}),
+                        k.area({ shape: new Rect(vec2(0, 60), 250, 70) }),
+                        k.pos(k.vec2(width() / 2, 940)),
+                        k.opacity(),
+                        k.anchor("center"),
+                        "diamond_obj",
+                    ]);
+                    diamond.fadeIn(2);
+
                 } else {
-                    //k.destroyAll("enemy");
                     play("enemy_death");
                     entity.destroy();
                 }
@@ -171,33 +178,55 @@ export function onCollideWithEnemy(k, entity_a, entity_a_state, entity_b) {
         entity_a.onCollide(entity_b.weapon, (entity) => {
             entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
             healthBar(k, entity_a);
-            shake( entity_a.shake);
+            shake(entity_a.shake);
         });
+    } else if (entity_b.type === "flamebar") {
+        entity_a.onCollide("fireball", (entity) => {
+            entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
+            healthBar(k, entity_a);
+            shake(entity_a.shake);
+        });
+
     } else {
         entity_a.onCollide(entity_b.tags[2], (entity_b) => {
             entity_a_state.setHealth(entity_a_state.getHealth() - entity_b.attackPower);
             healthBar(k, entity_a);
-            shake( entity_a.shake);
+            shake(entity_a.shake);
         });
     }
 }
 
-export function addFlamebar(position = vec2(0), angle = 0, num = 6) {
+export function addFlamebar(k, tag, position = vec2(0), angle = 0, num = 6) {
     // Create a parent game object for position and rotation
-    const flameHead = add([
-        pos(position),
-        rotate(angle),
+    const flameHead = k.add([
+        k.pos(position),
+        k.rotate(angle),
+        {
+            type: "flamebar",
+            attackPower: 1,
+        },
+        tag,
+        "flame_bar",
+
     ]);
 
     // Add each section of flame as children
     for (let i = 0; i < num; i++) {
-        flameHead.add([
-            sprite("fireball_1"),
-            pos(0, i * 42),
-            area(),
-            anchor("center"),
-            "flame",
-        ]);
+        if (i % 2 === 0) {
+           flameHead.add([
+                k.sprite("fireball_1"),
+                k.pos(0, i * 42),
+                k.area(),
+                k.anchor("center"),
+                "fireball"
+            ]);
+        } else {
+            flameHead.add([
+                k.sprite("fireball_1"),
+                k.pos(0, i * 42),
+                k.anchor("center"),
+            ]);
+        }
     }
 
     // The flame head's rotation will affect all its children
