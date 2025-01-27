@@ -9,10 +9,10 @@ const k = kaplay({
 	letterbox: true,
 	background: [255, 255, 255],
 	debugKey: "r",
-	debug: true,
+	debug: false,
 });
 
-debug.inspect = true;
+debug.inspect = false;
 
 k.loadRoot("./"); // A good idea for Itch.io publishing later
 k.loadSprite("sky", "sprites/sky_1.png");
