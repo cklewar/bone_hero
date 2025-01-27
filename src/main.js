@@ -69,4 +69,4 @@ k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("forest_and_castle", {levelIdx: 0});
+k.go("village", {levelIdx: 0});
