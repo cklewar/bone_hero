@@ -95,7 +95,7 @@ export default async function castle(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
 	//Boss
-    /*entities.boss1 = generateBossComponents(k, "boss_1", k.vec2(width() / 2, height() - 420), level, entities.player);
+    entities.boss1 = generateBossComponents(k, "boss_1", k.vec2(width() / 2, height() - 420), level, entities.player);
     await wait(2);
 
 	for (let i = 0; i < 45; i++) {
@@ -111,8 +111,6 @@ export default async function castle(k, levelIdx) {
     //Collide
     onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.boss2);
     onCollideWithEnemy(k, entities.boss2, entities.boss2.entityState, entities.player);
-    */
-
     onCollideWithEnemy(k, entities.player, entities.player.entityState, fbar1);
     onCollideWithEnemy(k, entities.player, entities.player.entityState, fbar2);
 }
