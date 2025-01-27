@@ -108,7 +108,7 @@ export default async function forest_and_castle(k, levelIdx) {
 	watchEntityHealth(k, entities.player);
 
     //Enemy
-	entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player, "warrior1");
+	entities.enemy = generateEnemyComponents(k, "echse", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player, "echse1");
     watchEntityHealth(k, entities.enemy, entities);
 
     //Collide

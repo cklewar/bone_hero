@@ -2,17 +2,16 @@
   "echse": {
     "x": 0,
     "y": 0,
-    "width": 384,
-    "height": 128,
-    "sliceX": 3,
+    "width": 1620,
+    "height": 64,
+    "sliceX": 21,
     "anims": {
       "idle": {
         "from": 0,
-        "to": 2,
-        "speed": 2,
+        "to": 20,
+        "speed": 3,
         "loop": true
-      },
-      "hit": 8
+      }
     }
   }
 }
