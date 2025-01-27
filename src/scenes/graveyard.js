@@ -5,15 +5,27 @@ import {
 import { generateEnemyComponents } from "../entities/enemy.js";
 import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy, onCollideWithObj } from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
+import { musicState } from "../state/musicGlobalState.js";
 import * as consts from "../const.js";
 import {get_scenes} from "./scenes.js";
 
 export default async function graveyard(k, levelIdx) {
-  const entities = {
-    player: null,
-    ghost1: null,
-    ghost2: null,
-  };
+    const entities = {
+        player: null,
+        ghost1: null,
+        ghost2: null,
+    };
+
+    //Background music
+    if (!musicState.getObj()) {
+        musicState.setTitle("scene_background_graveyard");
+        musicState.play();
+    } else {
+        musicState.stop();
+        musicState.setTitle("scene_background_graveyard");
+        musicState.play();
+        musicState.setPaused(false);
+    }
 
   add([
 		sprite("graveyard",
@@ -109,7 +121,7 @@ export default async function graveyard(k, levelIdx) {
 
             break;
         case 1:
-             //Objects
+            //Objects
             k.add([
                 k.sprite("key",{}),
                 k.area({ shape: new Rect(vec2(0, 0), 60, 180) }),

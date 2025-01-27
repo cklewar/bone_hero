@@ -9,10 +9,10 @@ const k = kaplay({
 	letterbox: true,
 	background: [255, 255, 255],
 	debugKey: "r",
-	debug: false,
+	debug: true,
 });
 
-debug.inspect = false;
+debug.inspect = true;
 
 k.loadRoot("./"); // A good idea for Itch.io publishing later
 k.loadSprite("sky", "sprites/sky_1.png");
@@ -66,7 +66,10 @@ k.loadSound("player_live_loss", "sounds/rpg_essentials/10_Battle_SFX/77_flesh_02
 
 k.loadMusic("scene_background_sky", "sounds/02_Zayon_Village.mp3");
 k.loadMusic("scene_background_castle", "sounds/03_Snake_Boss.wav");
+k.loadMusic("scene_background_graveyard", "sounds/01_Forest_Adventure.mp3");
+k.loadMusic("scene_background_cave", "sounds/01_Forest_Adventure.mp3");
+k.loadMusic("scene_background_sunset", "sounds/02_Zayon_Village.mp3");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("village", {levelIdx: 0});
+k.go("sunset", {levelIdx: 0});

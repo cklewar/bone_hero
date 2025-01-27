@@ -19,8 +19,9 @@ export default async function castle(k, levelIdx) {
         enemy: null,
     };
 
+    //Background music
     if (!musicState.getObj()) {
-        musicState.setTitle("scene_background_sky");
+        musicState.setTitle("scene_background_castle");
         musicState.play();
         musicState.setPaused(false);
     } else {
@@ -29,11 +30,6 @@ export default async function castle(k, levelIdx) {
         musicState.play();
         musicState.setPaused(false);
     }
-
-    const music = play("scene_background_castle", {
-        volume: 0.8,
-        loop: true
-    });
 
     add([
         sprite("castle_1",

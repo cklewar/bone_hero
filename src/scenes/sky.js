@@ -18,6 +18,7 @@ export default async function sky(k, levelIdx) {
         enemy: null,
     };
 
+    //Background music
     if (!musicState.getObj()) {
         musicState.setTitle("scene_background_sky");
         musicState.play();
@@ -121,7 +122,7 @@ export default async function sky(k, levelIdx) {
         k.destroy(bone);
     }
 
-     //Player
+    //Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
     watchPlayerOffScreen(k, entities.player, levelIdx, levels.length, "sky", "forest_and_castle", get_scenes());
 	healthBar(k);
