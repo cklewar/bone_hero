@@ -12,7 +12,7 @@ const k = kaplay({
 	debug: true,
 });
 
-debug.inspect = true;
+debug.inspect = false;
 
 k.loadRoot("./"); // A good idea for Itch.io publishing later
 k.loadSprite("sky", "sprites/sky_1.png");
@@ -72,4 +72,4 @@ k.loadMusic("scene_background_sunset", "sounds/02_Zayon_Village.mp3");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("sunset", {levelIdx: 0});
+k.go("intro", {levelIdx: 0});

@@ -71,6 +71,6 @@ export default async function intro(k) {
 	]);
 
 	k.onKeyDown("enter", () => {
-	    k.go("sunset", 0);
+	    k.go("castle", 0);
 	})
 }
