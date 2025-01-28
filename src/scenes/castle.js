@@ -4,7 +4,7 @@ import {
 } from "../entities/player.js";
 import { generateEnemyComponents } from "../entities/enemy.js";
 import { generateBossComponents } from "../entities/boss.js";
-import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy, addFlamebar} from "../utils.js";
+import { watchPlayerOffScreen, watchEntityHealth, onCollideWithEnemy, onCollideWithObj, addFlamebar} from "../utils.js";
 import { healthBar } from "../components/healthbar.js";
 import { playerState } from "../state/playerGlobalState.js";
 import { musicState } from "../state/musicGlobalState.js";
@@ -85,8 +85,8 @@ export default async function castle(k, levelIdx) {
     ])
 
     //Objects
-    addFlamebar(vec2(600, 760), -60, 8);
-    addFlamebar(vec2(1380, 760), -60, 8);
+    const fbar1 = addFlamebar(k, "flame_bar1", vec2(600, 760), -60, 8);
+    const fbar2 = addFlamebar(k, "flame_bar2", vec2(1380, 760), -60, 8);
 
     //Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
@@ -110,5 +110,7 @@ export default async function castle(k, levelIdx) {
 
     //Collide
     onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.boss2);
-    onCollideWithEnemy(k, entities.boss2, entities.enemy.entityState, entities.player);
+    onCollideWithEnemy(k, entities.boss2, entities.boss2.entityState, entities.player);
+    onCollideWithEnemy(k, entities.player, entities.player.entityState, fbar1);
+    onCollideWithEnemy(k, entities.player, entities.player.entityState, fbar2);
 }

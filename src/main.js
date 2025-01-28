@@ -34,7 +34,6 @@ k.loadSprite("village", "sprites/village.png");
 k.loadSprite("block_1", "sprites/block_1.png");
 k.loadSprite("castle_1", "sprites/castle.png");
 k.loadSprite("sunset_1", "sprites/sunset.png");
-k.loadSprite("stone_1", "sprites/stone.png");
 k.loadSprite("bone_1", "sprites/bone_1.png");
 k.loadSprite("flag_1", "sprites/flag_1.png");
 k.loadSprite("stamm_1", "sprites/stamm_1.png");
@@ -46,6 +45,7 @@ k.loadSprite("deadgrass_1", "sprites/deadgrass.png");
 k.loadSprite("boden_1", "sprites/boden.png");
 k.loadSprite("teppich_1", "sprites/teppich.png");
 k.loadSprite("king_1", "sprites/king.png");
+k.loadSprite("diamond_1", "sprites/diamond.png");
 
 k.loadSpriteAtlas("sprites/daemon_4.png", "sprites/daemon_4.json");
 k.loadSpriteAtlas("sprites/dungeon_1.png", "sprites/dungeon_1.json");

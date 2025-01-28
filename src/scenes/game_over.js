@@ -32,12 +32,9 @@ export default async function game_over(k) {
 		k.text("Press enter to start"),
 		k.pos(width() - 970 , height() - 300),
 		k.anchor("center"),
-		//k.color(),
-		//fadeIn(0.5),
-
 	]);
 
-	k.onKeyDown("enter", () => {
-		k.go("intro");
-	})
+	/*k.onKeyDown("enter", () => {
+		k.go("intro", 0);
+	})*/
 }
