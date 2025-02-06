@@ -52,7 +52,7 @@ export default async function forest_and_castle(k, levelIdx) {
 			"           ::::::    :::::::   ",
 			"                               ",
 			"                            :  ",
-			"   :::::.                   :  ",
+			"   :::::                    :  ",
 			"                            :  ",
 			"                            :  ",
 			"                            :  ",
@@ -119,9 +119,10 @@ export default async function forest_and_castle(k, levelIdx) {
             watchEntityHealth(k, entities.echse1, entities);
             watchEntityHealth(k, entities.echse2, entities);
             watchEntityHealth(k, entities.echse3, entities);
+			
 
             //Collide
-            onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.echse1);
+            onCollidewithEnemy(k, entities.player, entities.player.entityState, entities.echse1);
             onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.echse2);
             onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.echse3);
             onCollideWithEnemy(k, entities.echse1, entities.echse1.entityState, entities.player);
