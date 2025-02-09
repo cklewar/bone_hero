@@ -68,7 +68,7 @@ export default async function graveyard(k, levelIdx) {
 			"              :  :             ",
 			"    :::  :::             :::   ",
 			"                               ",
-			//"                       ::::    ",
+			//                       ::::   ",
 			"                               ",
 			"                               ",
 			"                               ",
@@ -129,9 +129,22 @@ export default async function graveyard(k, levelIdx) {
                 k.opacity(),
                 k.anchor("center"),
                 "key_obj",
-            ])
+           
+			])
+
+			    //Enemy
+			
+				entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 250), level, entities.player, "ghost1");
+				entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player, "ghost2");
+
+
+
 
             //Collide
             onCollideWithObj(k, entities.player, entities.player.entityState, "key_obj");
-    }
+
+			onCollideWithEnemy(k, entities.ghost1, entities.ghost1.entityState, entities.player);
+			onCollideWithEnemy(k, entities.ghost2, entities.ghost2.entityState, entities.player
+
+   }
 }
