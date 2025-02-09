@@ -144,7 +144,7 @@ export default async function graveyard(k, levelIdx) {
             onCollideWithObj(k, entities.player, entities.player.entityState, "key_obj");
 
 			onCollideWithEnemy(k, entities.ghost1, entities.ghost1.entityState, entities.player);
-			onCollideWithEnemy(k, entities.ghost2, entities.ghost2.entityState, entities.player
+			onCollideWithEnemy(k, entities.ghost2, entities.ghost2.entityState, entities.player);
 
    }
 }
