@@ -6,12 +6,6 @@
     "height": 64,
     "sliceX": 18,
     "anims": {
-      "idle": {
-        "from": 0,
-        "to": 0,
-        "speed": 1,
-        "loop": false
-      },
       "idle_right": {
         "from": 0,
         "to": 0,

@@ -42,7 +42,7 @@ function jump(p) {
 export function generatePlayerComponents(k, pos, level) {
 
     var items = [
-       k.sprite("bone_hero", { anim: "idle" }),
+       k.sprite("bone_hero", { anim: "idle_right" }),
         k.area({ shape: new k.Rect(vec2(-15, -2), 20, 50)}),
         k.body(),
         k.pos(pos),
@@ -76,7 +76,7 @@ export function generatePlayerComponents(k, pos, level) {
         player.weapon,
     ]);
 
-    playAnimIfNotPlaying(player, "idle");
+    playAnimIfNotPlaying(player, "idle_right");
     player.onGround((i) => {
         if (i.is("tile_grave")) {
             i.move(0, 2000);
@@ -88,20 +88,15 @@ export function generatePlayerComponents(k, pos, level) {
 
 export function setPlayerControls(k, player) {
     k.onKeyRelease((key) => {
-			if (!isKeyDown("left") && !isKeyDown("right")) {
-				playAnimIfNotPlaying(player, "idle");
-				player.direction == "right"
-				let weapon = player.get("sword")[0];
+        if (!isKeyDown("left") && !isKeyDown("right")) {
+            let weapon = player.get("sword")[0];
 
-				if (weapon.isSpinning()){
-                } else {
-				    weapon.pos.x = -16;
-                    weapon.angle = 60;
-                }
-
-			} else {
-
-			}
+            if (player.direction == "right") {
+                playAnimIfNotPlaying(player, "idle_right");
+            } else if (player.direction == "left") {
+                playAnimIfNotPlaying(player, "idle_left");
+            }
+        }
     });
 
 	k.onKeyDown((key) => {
