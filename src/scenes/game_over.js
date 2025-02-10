@@ -34,7 +34,7 @@ export default async function game_over(k) {
 		k.anchor("center"),
 	]);
 
-	/*k.onKeyDown("enter", () => {
-		k.go("intro", 0);
-	})*/
+	k.onKeyDown("enter", () => {
+		k.go("sky", 0);
+	})
 }
