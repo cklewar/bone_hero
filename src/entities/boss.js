@@ -11,23 +11,22 @@ function follow(player) {
     return {
         id: "follow",
         update() {
-            var deg = 0;
+            if (!follow) {
+                var deg = 0;
 
-            if (player.pos.x > this.pos.x) {
-                deg = -Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (180 / Math.PI)));
-            } else {
-                deg = Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (-180 / Math.PI)));
-            }
+                if (player.pos.x > this.pos.x) {
+                    deg = -Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (180 / Math.PI)));
+                } else {
+                    deg = Math.abs(Math.floor(Math.atan2(this.pos.y - player.pos.y, this.pos.x - player.pos.x) * (-180 / Math.PI)));
+                }
+                if (deg > 0) {
+                    this.angle = 90 - deg;
+                } else {
+                    this.angle = 90 + deg;
+                }
 
-            console.log(deg);
-            if (deg > 0) {
-                this.angle = 90 - deg;
-            } else {
-                this.angle = 90 + deg;
+                follow = true;
             }
-        },
-        follow() {
-            follow = true;
         },
     };
 }

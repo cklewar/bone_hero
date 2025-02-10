@@ -109,10 +109,11 @@ export default async function castle(k, levelIdx) {
     watchEntityHealth(k, entities.boss2, entities);
 
     //Collide
+    /*
     onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.boss2);
     onCollideWithEnemy(k, entities.boss2, entities.boss2.entityState, entities.player);
     onCollideWithEnemy(k, entities.player, entities.player.entityState, fbar1);
     onCollideWithEnemy(k, entities.player, entities.player.entityState, fbar2);
     onCollideWithObj(k, entities.player, entities.player.entityState, "diamond_obj");
-
+*/
 }
