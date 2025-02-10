@@ -88,8 +88,6 @@ export default async function sunset(k, levelIdx) {
 	setPlayerControls(k, entities.player);
 	watchEntityHealth(k, entities.player);
 
-
-
     //Enemy
 	/*entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() / 2, height() - consts.PLAYER_START_POS_Y_OFFSET), level, entities.player, "warrior1");
     watchEntityHealth(k, entities.enemy, entities);

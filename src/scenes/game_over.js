@@ -1,3 +1,5 @@
+import { playerState } from "../state/playerGlobalState.js";
+
 function fadeIn(speed = 1) {
     let opacity = 0;
 
@@ -29,12 +31,13 @@ export default async function game_over(k) {
     ]);
 
 	let txt = k.add([
-		k.text("Press enter to start"),
+		k.text("Press space to restart"),
 		k.pos(width() - 970 , height() - 300),
 		k.anchor("center"),
 	]);
 
-	k.onKeyDown("enter", () => {
-		k.go("sky", 0);
+	k.onKeyDown("space", () => {
+	    playerState.setHealth(playerState.getMaxHealth());
+		k.go("intro", 0);
 	})
 }

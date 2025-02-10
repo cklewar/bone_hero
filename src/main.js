@@ -1,7 +1,7 @@
 import kaplay from "kaplay";
 import "kaplay/global";
 import * as consts from "./const.js";
-import {init_scenes, get_scenes } from "./scenes/scenes.js";
+import {init_scenes, get_scenes} from "./scenes/scenes.js";
 
 const k = kaplay({
 	width: 1920,
@@ -9,7 +9,7 @@ const k = kaplay({
 	letterbox: true,
 	background: [255, 255, 255],
 	debugKey: "r",
-	debug: true,
+	debug: false,
 });
 
 debug.inspect = false;
@@ -72,4 +72,4 @@ k.loadMusic("scene_background_sunset", "sounds/02_Zayon_Village.mp3");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("end", {levelIdx: 0});
+k.go("castle", {levelIdx: 0});

@@ -158,6 +158,6 @@ export default async function forest_and_castle(k, levelIdx) {
             
 		  break;
 		default:
-		  console.log(`Sorry, we are out of ${expr}.`);
+		  console.log(`No level ${levelIdx} found`);
 	}
 }

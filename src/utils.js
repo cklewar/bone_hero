@@ -133,14 +133,13 @@ export function watchEntityHealth(k, entity) {
                     k.destroyAll("flame_bar");
                     let diamond = k.add([
                         k.sprite("diamond_1",{}),
-                        k.area({ shape: new Rect(vec2(0, 60), 250, 70) }),
+                        k.area({ shape: new Rect(vec2(0, 0), 80, 120) }),
                         k.pos(k.vec2(width() / 2, 940)),
                         k.opacity(),
                         k.anchor("center"),
                         "diamond_obj",
                     ]);
                     diamond.fadeIn(2);
-
                 } else {
                     play("enemy_death");
                     entity.destroy();
@@ -165,7 +164,11 @@ export function onCollideWithNpc(k, entity_a, entity_a_state, entity_b) {
 }
 
 export function onCollideWithObj(k, entity_a, entity_a_state, entity_b) {
-    entity_a.onCollide(entity_b, (entity_a) => {
+    entity_a.onCollide(entity_b, (entity) => {
+        if (entity.tags[1] == "diamond_obj") {
+            go("end", 0)
+        }
+
         if (!entity_a_state.getHasKey()) {
             entity_a_state.setHasKey(true);
             k.destroy(k.get(entity_b)[0]);

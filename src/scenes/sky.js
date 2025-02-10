@@ -72,7 +72,7 @@ export default async function sky(k, levelIdx) {
 			"===============================",
 		],
 		[
-		    "                    t           ",
+		    "                    t          ",
 			"                               ",
 			"                               ",
 		    "                               ",
@@ -112,7 +112,6 @@ export default async function sky(k, levelIdx) {
 	})
 
     //Bone Animation
-    /*
     if (levelIdx === 0) {
         const bone = add([
             sprite("bone_2", { anim: "idle" }),
@@ -122,7 +121,6 @@ export default async function sky(k, levelIdx) {
 	    await consts.delay(2400);
         k.destroy(bone);
     }
-    */
 
     //Player
     entities.player = generatePlayerComponents(k, k.vec2(0, height() - consts.PLAYER_START_POS_Y_OFFSET), level);
@@ -134,12 +132,12 @@ export default async function sky(k, levelIdx) {
 	switch (levelIdx) {
 		case 0:
 			//Enemy
-			/*entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 600, height() - 900), level, entities.player, "warrior1");
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 600, height() - 900), level, entities.player, "warrior1");
 			watchEntityHealth(k, entities.enemy, entities);
 
 			//Collide
 			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
-			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);*/
+			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 		  	break;
 		case 1:
 			//Enemy
@@ -160,6 +158,6 @@ export default async function sky(k, levelIdx) {
 			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 		  break;
 		default:
-		  console.log(`Sorry, we are out of ${expr}.`);
+		  console.log(`No level ${levelIdx} found`);
 	}
 }
