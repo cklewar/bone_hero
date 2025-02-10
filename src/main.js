@@ -72,4 +72,4 @@ k.loadMusic("scene_background_sunset", "sounds/02_Zayon_Village.mp3");
 
 k.setGravity(consts.GRAVITY);
 init_scenes(k);
-k.go("sky", {levelIdx: 0});
+k.go("castle", {levelIdx: 0});

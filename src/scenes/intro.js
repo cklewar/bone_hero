@@ -1,7 +1,7 @@
 import * as consts from "../const.js"
 
 const intro_txt = `This story comes from a world far away.
-	\nBut that doesn't matter now because it's
+	\nThat doesn't matter now because it's
 	\nabout a powerful stone called the Blue Life Stone
 	\nthat gives the land grain and life but the angels
 	\nwere the protectors of the stone but a young angel

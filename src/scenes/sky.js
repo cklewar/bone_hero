@@ -142,6 +142,13 @@ export default async function sky(k, levelIdx) {
 			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);*/
 		  	break;
 		case 1:
+			//Enemy
+			entities.enemy = generateEnemyComponents(k, "warrior", k.vec2(width() - 1150, height() - 700), level, entities.player, "warrior1");
+			watchEntityHealth(k, entities.enemy, entities);
+
+			//Collide
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.enemy);
+			onCollideWithEnemy(k, entities.enemy, entities.enemy.entityState, entities.player);
 			break;
 		case 2:
 		  	//Enemy
