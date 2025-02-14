@@ -2,7 +2,7 @@ export default function bossStateManager() {
     let instance = null;
 
     function createInstance() {
-      const maxHealth = 1;
+      const maxHealth = 10;
       let health = maxHealth;
 
       return {
