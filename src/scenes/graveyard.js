@@ -118,6 +118,8 @@ export default async function graveyard(k, levelIdx) {
             onCollideWithEnemy(k, entities.ghost2, entities.ghost2.entityState, entities.player);
             onCollideWithEnemy(k, entities.ghost3, entities.ghost3.entityState, entities.player);
             onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost1);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost2);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost3);
 
             break;
         case 1:
@@ -132,19 +134,17 @@ export default async function graveyard(k, levelIdx) {
            
 			])
 
-			    //Enemy
-			
-				entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 250), level, entities.player, "ghost1");
-				entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player, "ghost2");
-
-
-
+			//Enemy
+			entities.ghost1 = generateEnemyComponents(k, "ghost", k.vec2(width() / 2, height() - 250), level, entities.player, "ghost1");
+			entities.ghost2 = generateEnemyComponents(k, "ghost", k.vec2(width() / 5, height() - 700), level, entities.player, "ghost2");
+			watchEntityHealth(k, entities.ghost1);
+            watchEntityHealth(k, entities.ghost2);
 
             //Collide
             onCollideWithObj(k, entities.player, entities.player.entityState, "key_obj");
-
 			onCollideWithEnemy(k, entities.ghost1, entities.ghost1.entityState, entities.player);
 			onCollideWithEnemy(k, entities.ghost2, entities.ghost2.entityState, entities.player);
-
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost1);
+			onCollideWithEnemy(k, entities.player, entities.player.entityState, entities.ghost2);
    }
 }
